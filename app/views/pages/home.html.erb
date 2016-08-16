@@ -1,4 +1,14 @@
-<h1>Pages#home</h1>
- <div style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_alt('first-background.jpeg') %>);">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.4) 0%, rgba(0,36,61,0.3) 50%), url(<%= image_path "first-background.jpg" %>);">
+  <div class="banner-content">
+    <h2 class="text-center" >Find your ghostwriter</h2>
+    <br>
+    <br>
+      <form class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control" id="form-style"  placeholder="Search somebody or competences">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+  </div>
+</div>
 
- </div>
