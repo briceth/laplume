@@ -2,11 +2,11 @@
 <% if @user.writer? == false %>
   <!-- client basic info -->
   <h1>@user.first_name + " " + @user.last_name</h1>
-  <p>This user is not a writer</p>
+  <p>This user is potentially looking for good writers</p>
   <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
 
   <% if @user.id == current_user.id %>
-    <%= link_to "Edit Info" %>
+    <%= link_to "Edit Info", edit_user_path(current_user) %>
   <% end %>
 
 <!-- WRITER PROFILE PAGE -->
@@ -15,7 +15,12 @@
   <h1>@user.first_name + " " + @user.last_name</h1>
   <h2>@user.title</h2>
   <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
-
+  <h3>Daily Price: #{@user.price}€</h3>
+  <h3>Speciatly: #{@user.category}€</h3>
+  <h3><%= @user.availability? ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h3>
+  <% if @user.id == current_user.id %>
+    <%= link_to "Edit Info", edit_user_path(current_user) %>
+  <% end %>
 
   <!-- LE CV -->
   <div class="">
@@ -32,6 +37,9 @@
               <h3><%= experience.organization %></h3>
               <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
               <p><%= experience.description %></p>
+              <% if @user.id == current_user.id %>
+                <%= link_to "Edit Experience", edit_experience_path(experience) %>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -48,6 +56,9 @@
               <h3><%= education.title %></h3>
               <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s %><p>
               <p><%= education.description %></p>
+              <% if @user.id == current_user.id %>
+                <%= link_to "Edit Education", edit_experience_path(education) %>
+              <% end %>
             </div>
           <% end %>
         </div>

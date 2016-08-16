@@ -19,8 +19,8 @@ class ExperiencesController < ApplicationController
 
   def update
     @user = current_user
-    @experience = Experience.new(experience_params)
-    @experience.save
+    @experience = Experience.find(params[:id])
+    @experience.update(experience_params)
     redirect_to user_path(@user)
   end
 

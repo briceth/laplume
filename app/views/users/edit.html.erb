@@ -1,0 +1,42 @@
+<!-- CLIENT PROFILE PAGE FORM  -->
+<% if @user.writer? == false %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="experience-form">
+          <%= simple_form_for([ current_user ]) do |form| %>
+            <%= form.input :first_name %>
+            <%= form.input :last_name %>
+            <%= form.input :phone_number %>
+            <%= # form.input  PHOTO %>
+            <%= form.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- WRITE PROFILE PAGE FORM  -->
+<% else %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="experience-form">
+          <%= simple_form_for([ current_user ]) do |form| %>
+            <%= form.input :first_name %>
+            <%= form.input :last_name %>
+            <%= # form.input  PHOTO %>
+            <%= form.input :category, collection: ["Biography", "Content Marketing", "Thriller", "Translation", "Romance", "Science-Fiction", "Movie Script", "Academia", "Adult"] %>
+            <%= form.input :title %>
+            <%= form.input :price %>
+            <%= form.input :available? %>
+            <%= form.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
