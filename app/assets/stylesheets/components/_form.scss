@@ -1,4 +1,4 @@
-.padded {
+.wrapper.padded {
   background-color: #5588A3;
   height: 100vh;
 }
@@ -14,7 +14,7 @@
 .form-actions {
   font-family: $dancing-font;
 }
-.signup {
+.wrapper.signup {
   background-color: #CABFAB;
 }
 .experience-form {
