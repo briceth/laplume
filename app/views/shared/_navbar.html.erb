@@ -9,6 +9,9 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+      <!-- Become a writer button -->
+      <%= link_to ("Become a writer"), user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">

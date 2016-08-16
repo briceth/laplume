@@ -1,42 +1,59 @@
-<div class="wrapper-profil">
-  <div class="container">
-    <div class="row">
-      <div class="infos-profil">
-        <div class="identity-card">
-          <div class="col-xs-9">
-            <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
-            <div id=    "">
-            <% if @user.first_name != nil %>
-            <h1><%= @user.first_name + " " + @user.last_name %></h1>
-            <% end %>
-            <h3>Lyon</h3>
-            <ul class="list-inline">
-              <li>Biography</li>
-              <li>Copywritter</li>
-            </ul>
-            </div>
-          </div>
-        </div>
-      <div class="pricing-profil">
-        <div class="col-xs-3">
-          Prix : 13€
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<p><%= "*" * 35 %></p>
-<% if @user.writer? %>
-<p> he's a writer </p>
-  <% @experiences = @user.experiences %>
-  <% @experiences.each do |experience| %>
-  <h2><%= experience.category %></h2>
-  <h4><%= experience.title + " @ " + experience.organization %></h4>
-  <h6><%= experience.start_date.to_s + " to " + experience.end_date.to_s %></h6>
-  <p><%= experience.description %></p>
-  <p>*****************</p>
-  <% end %>
-<% end %>
-<%= @user.email %>
+<!-- CLIENT PROFILE PAGE  -->
+<% if @user.writer? == false %>
+  <!-- client basic info -->
+  <h1>@user.first_name + " " + @user.last_name</h1>
+  <p>This user is not a writer</p>
+  <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
 
+  <% if @user.id == current_user.id %>
+    <%= link_to "Edit Info" %>
+  <% end %>
+
+<!-- WRITER PROFILE PAGE -->
+<% else %>
+  <!-- writer basic info -->
+  <h1>@user.first_name + " " + @user.last_name</h1>
+  <h2>@user.title</h2>
+  <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
+
+
+  <!-- LE CV -->
+  <div class="">
+
+
+      <!-- les expériences pro -->
+      <% if @work_experiences.empty? %>
+      <% else %>
+        <div class="">
+          <h3>EXPERIENCES</h3>
+          <% @experiences.each do |experience| %>
+            <div class="">
+              <h4><%= experience.title %></h4>
+              <h3><%= experience.organization %></h3>
+              <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
+              <p><%= experience.description %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- les formations -->
+      <% if @educations.empty? %>
+      <% else %>
+        <div class="">
+          <h3>EDUCATION</h3>
+          <% @educations.each do |education| %>
+            <div class="">
+              <h4><%= education.organization %></h4>
+              <h3><%= education.title %></h3>
+              <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s %><p>
+              <p><%= education.description %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+  </div>
+
+  <!-- fin du IF writer? -->
+<% end %>
