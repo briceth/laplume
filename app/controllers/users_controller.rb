@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
+    @user.save
     redirect_to user_path(@user)
   end
 

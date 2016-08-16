@@ -6,8 +6,4 @@ class User < ApplicationRecord
   has_many :experiences
   has_many :missions
   has_many :offers
-
-  def initialize
-    @writer? = false
-  end
 end

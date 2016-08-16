@@ -1,8 +1,10 @@
 <!-- CLIENT PROFILE PAGE  -->
 <% if @user.writer? == false %>
   <!-- client basic info -->
-  <h1>@user.first_name + " " + @user.last_name</h1>
-  <p>This user is potentially looking for good writers</p>
+  <% if @user.first_name != nil && @user.last_name != nil  %>
+    <h1><%= @user.first_name + " " + @user.last_name %></h1>
+  <% end %>
+  <p><%= @user.id == current_user.id ? "Fill your profile in, it only takes a minute" : "This user is potentially looking for good writers" %></p>
   <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
 
   <% if @user.id == current_user.id %>
@@ -12,12 +14,11 @@
 <!-- WRITER PROFILE PAGE -->
 <% else %>
   <!-- writer basic info -->
-  <h1>@user.first_name + " " + @user.last_name</h1>
-  <h2>@user.title</h2>
+  <h1><%= @user.first_name + " " + @user.last_name %></h1>
+  <h2><%= @user.title %></h2>
   <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
-  <h3>Daily Price: #{@user.price}€</h3>
-  <h3>Speciatly: #{@user.category}€</h3>
-  <h3><%= @user.availability? ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h3>
+  <h3><%= "Daily Price: #{@user.price}€" %></h3>
+  <h3><%= @user.available? ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h3>
   <% if @user.id == current_user.id %>
     <%= link_to "Edit Info", edit_user_path(current_user) %>
   <% end %>

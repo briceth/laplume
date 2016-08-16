@@ -11,7 +11,7 @@
 
       <!-- Become a writer button -->
       <% if current_user.writer? == false %>
-        <%= link_to ("Become a writer"), user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Become a writer", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
       <!-- Notification -->
@@ -33,7 +33,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <i class="fa fa-home"></i> <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
