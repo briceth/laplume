@@ -1,3 +1,14 @@
+#logo {
+  font-family: $dancing-font;
+  color: $midnight-blue;
+  font-size: 30px;
+  &:hover {
+    text-decoration: none !important;
+    color: $midnight-blue-80;
+  }
+}
+
+
 /* Main class */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
@@ -40,11 +51,11 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+  color: $midnight-blue;
+  font-size: 20px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $belize-blue;
   text-decoration: none;
 }
 
