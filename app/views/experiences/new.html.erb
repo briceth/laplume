@@ -1,0 +1,9 @@
+<%= simple_form_for([ @user, @experience ]) do |form| %>
+  <%= form.input :category, collection: ["Experience", "Education", "Languages" ] %>
+  <%= form.input :title %>
+  <%= form.input :organization %>
+  <%= form.input :start_date %>
+  <%= form.input :end_date %>
+  <%= form.input :description %>
+  <%= form.button :submit %>
+<% end %>
