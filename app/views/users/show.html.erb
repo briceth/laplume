@@ -24,22 +24,17 @@
   </div>
 </div>
 </div>
-<div class="wrapper-projects">
-  <div class="container">
-    <div class="row">
-      <div class="card-project">
-        <div class="col-xs-4">
-        </div>
-      </div>
-      <div class="card-project">
-        <div class="col-xs-4">
-        </div>
-      </div>
-      <div class="card-project">
-        <div class="col-xs-4">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<p><%= "*" * 35 %></p>
+<% if @user.writer? %>
+<p> he's a writer </p>
+  <% @experiences = @user.experiences %>
+  <% @experiences.each do |experience| %>
+  <h2><%= experience.category %></h2>
+  <h4><%= experience.title + " @ " + experience.organization %></h4>
+  <h6><%= experience.start_date + " - " + experience.end_date %></h6>
+  <p><%= experience.description %></p>
+  <p>*****************</p>
+  <% end <%></%>
+<% end %>
 <%= @user.email %>
+

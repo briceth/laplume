@@ -2,24 +2,25 @@ class ExperiencesController < ApplicationController
 
   def new
     @user = current_user
+    @experience = Experience.new
   end
 
   def create
     @user = current_user
-    @experience = Experience.new(user: @user + experience_params)
+    @experience = Experience.new(experience_params)
     @experience.save
   end
 
   def edit
     @user = current_user
-    @experience = Experience.new
+    @experience = Experience.find(params[:id])
   end
 
   def update
     @user = current_user
-    @experience = Experience.new(user: @user + experience_params)
+    @experience = Experience.new(experience_params)
     @experience.save
-    redirect_to user_path(@user) #todo creat route user
+    redirect_to user_path(@user)
   end
 
   def destroy
@@ -31,6 +32,6 @@ class ExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:experience).permit(:category, :user_id???, :title, :organization, :start_date, :end_date, :description)
+    params.require(:experience).permit(:category, :user_id, :title, :organization, :start_date, :end_date, :description)
   end
 end
