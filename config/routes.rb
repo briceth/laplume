@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
 
+
   resources :missions do
-    resources :offers, only: [:new, :create, :destroy, :edit, :update]
+    resources :offers, only: [:new, :create, :sdestroy, :edit, :update]
   end
 
 end
