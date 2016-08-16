@@ -1,0 +1,40 @@
+<div class="wrapper-profil">
+  <div class="container">
+    <div class="row">
+      <div class="infos-profil">
+        <div class="identity-card">
+          <div class="col-xs-9">
+            <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
+            <div id=    "">
+            <h1>Jeannine Dufour</h1>
+            <h3>Lyon</h3>
+            <ul class="list-inline">
+              <li>Biography</li>
+              <li>Copywritter</li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      <div class="pricing-profil">
+        <div class="col-xs-3">
+          Prix : 13€
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<p><%= "*" * 35 %></p>
+<% if @user.writer? %>
+<p> he's a writer </p>
+  <% @experiences = @user.experiences %>
+  <% @experiences.each do |experience| %>
+  <h2><%= experience.category %></h2>
+  <h4><%= experience.title + " @ " + experience.organization %></h4>
+  <h6><%= experience.start_date + " - " + experience.end_date %></h6>
+  <p><%= experience.description %></p>
+  <p>*****************</p>
+  <% end <%></%>
+<% end %>
+<%= @user.email %>
+
