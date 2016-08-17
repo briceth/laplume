@@ -2,15 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <div class="form">
+        <div class="experience-form">
           <%= simple_form_for([ @experience ]) do |form| %>
-            <%= form.input :category, collection: ["Experience", "Education", "Languages" ] %>
+            <%= form.input :category, collection: ["Experience", "Education" ] %>
             <%= form.input :title %>
             <%= form.input :organization %>
             <%= form.input :start_date %>
             <%= form.input :end_date %>
             <%= form.input :description %>
-            <%= form.input :user_id, input_html: { value: @user.id}  %>
             <%= form.button :submit %>
           <% end %>
         </div>

@@ -6,9 +6,10 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @user = current_user
     @experience = Experience.new(experience_params)
+    @experience.user = current_user
     @experience.save
+    redirect_to user_path(current_user)
   end
 
   def edit
@@ -18,8 +19,8 @@ class ExperiencesController < ApplicationController
 
   def update
     @user = current_user
-    @experience = Experience.new(experience_params)
-    @experience.save
+    @experience = Experience.find(params[:id])
+    @experience.update(experience_params)
     redirect_to user_path(@user)
   end
 
@@ -32,6 +33,6 @@ class ExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:experience).permit(:category, :user_id, :title, :organization, :start_date, :end_date, :description)
+    params.require(:experience).permit(:category, :title, :organization, :start_date, :end_date, :description)
   end
 end
