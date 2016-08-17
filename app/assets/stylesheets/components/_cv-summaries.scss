@@ -1,15 +1,29 @@
+
+.client-summary-photo {
+  margin: 10px 0px;
+}
+
+
 .user-summary-all {
   display: flex;
+  align-items: center;
 }
 
 .user-summary-photo {
+   height: 60%;
 
-}
+ }
 
 .user-summary-info {
-
+  flex: 0 0 60%;
 }
 
 .user-summary-book {
 
+}
+
+.spacer {
+  background-color: $midnight-blue-80;
+  height: 5vh;
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.4) 0%, rgba(0,36,61,0.3) 50%);
 }
