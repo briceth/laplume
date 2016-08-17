@@ -10,7 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Become a writer button -->
-      <% if current_user.writer? == false %>
+      <% if current_user.writer == false %>
         <%= link_to "Become a writer", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
