@@ -3,10 +3,10 @@
       <div class="row">
         <h2>Voici vos mission</H2>
         <% @missions.each do |mission| %>
-          <h2><%= mission.title  %></h2>
+          <h3><%= mission.title  %></h3>
           <p><%= mission.description  %></p>
-          <p><%= mission.category  %></p>
-          <p><%= mission.status  %></p>
+          <p><strong><%= mission.category  %></strong></p>
+          <p><strong><%= mission.status  %></strong></p>
           <%= link_to 'allez voir', mission_path(mission), class: "btn btn-warning" %>
         <% end %>
         </div>
