@@ -4,19 +4,19 @@
 
   <!-- client basic info -->
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="user-summary-all">
-
-          <div class="user-summary-photo">
+    <div class="row summary-all">
+      <div class="col-xs-2">
+       <div class="client-summary-photo">
             <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
           </div>
+        </div>
 
+        <div class="col-xs-10">
           <div class="user-summary-info">
             <% if @user.first_name != nil && @user.last_name != nil  %>
               <h1><%= @user.first_name + " " + @user.last_name %></h1>
             <% end %>
-            <p><%= @user.id == current_user.id && @user.first_name.nil? ? "Fill your profile in, it only takes a minute" : "" %></p>
+            <p style="font-size: 30px; padding-top: 10px;"><%= @user.id == current_user.id && @user.first_name.nil? ? "Fill your profile in, it only takes a minute" : "" %></p>
             <% if @user.id == current_user.id %>
             <%= link_to "Edit Info", edit_user_path(current_user) %>
             <% end %>
@@ -25,6 +25,8 @@
       </div>
     </div>
   </div>
+
+  <div class="spacer"></div>
 
 
 <!-- WRITER PROFILE PAGE -->
