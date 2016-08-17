@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="container">
+      <div class="row">
+        <h2>Voici vos mission</H2>
+        <% @missions.each do |mission| %>
+          <h2><%= mission.title  %></h2>
+          <p><%= mission.description  %></p>
+          <p><%= mission.category  %></p>
+          <p><%= mission.status  %></p>
+          <%= link_to 'allez voir', mission_path(mission), class: "btn btn-warning" %>
+        <% end %>
+        </div>
+      <div class="text-center"> <%= link_to "Créer une mission", new_mission_path, class: "btn btn-primary"%></div>
+  </div>
+</div>

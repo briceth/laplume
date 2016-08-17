@@ -12,7 +12,7 @@
   <% if @user.id == current_user.id %>
     <%= link_to "Edit Info", edit_user_path(current_user) %>
     <br>
-    <%= link_to "Book this plume", edit_user_path(current_user) %>
+    <%= link_to "Book this plume", new_mission_path %>
   <% end %>
 
 
@@ -27,8 +27,8 @@
   <h4><%= @user.available ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h4>
   <% if @user.id == current_user.id %>
     <%= link_to "Edit Info", edit_user_path(current_user) %>
+    <%= link_to "Vos missions", missions_path %>
   <% end %>
-
 
 
   <!-- temporary divider -->
