@@ -88,12 +88,14 @@
                     <h3><i class="fa fa-wpforms" aria-hidden="true"></i> EXPERIENCES</h3>
                     <% @work_experiences_sorted.each do |experience| %>
                       <div class="">
-                        <h4><%= experience.title + " @ " + experience.organization %></h4>
+                        <h4 class="display-inline"><%= experience.title + " @ " + experience.organization %></h4>
+                          <% if @user.id == current_user.id %>
+                            <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
+                          <% end %>
+
+
                         <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
                         <p><%= experience.description %></p>
-                        <% if @user.id == current_user.id %>
-                          <%= link_to "Edit Experience", edit_experience_path(experience) %>
-                        <% end %>
                       </div>
                     <% end %>
                   </div>
@@ -106,12 +108,12 @@
                     <h3><i class="fa fa-graduation-cap" aria-hidden="true"></i> EDUCATION</h3>
                     <% @educations.each do |education| %>
                       <div class="">
-                        <h4><%= education.title + ' @ ' + education.organization %></h4>
+                        <h4 class="display-inline"><%= education.title + ' @ ' + education.organization %></h4>
+                          <% if @user.id == current_user.id %>
+                            <%= link_to "Edit Education", edit_experience_path(education), class: "padded-left-5px" %>
+                          <% end %>
                         <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s %><p>
                         <p><%= education.description %></p>
-                        <% if @user.id == current_user.id %>
-                          <%= link_to "Edit Education", edit_experience_path(education) %>
-                        <% end %>
                       </div>
                     <% end %>
                   </div>
