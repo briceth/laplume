@@ -1,7 +1,10 @@
-       <% @writers.each do |writer| %>
-          <% writer.experiences.each do |experience| %>
-            <%= experience[:title] %>
-
-            <% end %>
-          <% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card-profil-search">
+      <% @writers do |writer| %>
+      <%= writer %>
+      </div>
+    </div>
+  </div>
+</div>
