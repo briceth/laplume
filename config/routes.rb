@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   resources :missions do
     resources :offers, only: [:new, :create, :destroy, :edit, :update]
   end
-
 end
