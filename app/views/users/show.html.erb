@@ -56,14 +56,16 @@
           <% if @user.id == current_user.id %>
             <%= link_to "Edit Info", edit_user_path(current_user) %>
             <%= link_to "Vos missions", missions_path %>
+          <% end %>
         </div>
         <br>
       </div>
       <div class="col-xs-3">
         <div class="user-summary-book-button margin-right-5px">
-          <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
+          <% if @user.id != current_user.id %>
+            <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
+          <% end %>
         </div>
-        <% end %>
       </div>
     </div>
   </div>
@@ -76,8 +78,10 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
           <div class="">
+            <% if @experiences.empty? == false %>
+              <h2>Résumé</h2>
+            <% end %>
             <% if @user.id == current_user.id %>
-              <h2>Your Résumé</h2>
               <%= link_to "Add an Experience", new_experience_path %>
             <% end %>
 
@@ -89,11 +93,9 @@
                     <% @work_experiences_sorted.each do |experience| %>
                       <div class="">
                         <h4 class="display-inline"><%= experience.title + " @ " + experience.organization %></h4>
-                          <% if @user.id == current_user.id %>
-                            <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
-                          <% end %>
-
-
+                        <% if @user.id == current_user.id %>
+                          <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
+                        <% end %>
                         <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
                         <p><%= experience.description %></p>
                       </div>
@@ -112,7 +114,7 @@
                           <% if @user.id == current_user.id %>
                             <%= link_to "Edit Education", edit_experience_path(education), class: "padded-left-5px" %>
                           <% end %>
-                        <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s %><p>
+                        <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s + " >> " + ([(education.end_date.year - education.start_date.year), 1].max ).to_s + " year(s)" %><p>
                         <p><%= education.description %></p>
                       </div>
                     <% end %>
