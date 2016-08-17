@@ -1,5 +1,7 @@
 <!-- CLIENT PROFILE PAGE  -->
+
 <% if @user.writer == false %>
+
   <!-- client basic info -->
   <% if @user.first_name != nil && @user.last_name != nil  %>
     <h1><%= @user.first_name + " " + @user.last_name %></h1>
@@ -9,7 +11,10 @@
 
   <% if @user.id == current_user.id %>
     <%= link_to "Edit Info", edit_user_path(current_user) %>
+    <br>
+    <%= link_to "Book this plume", edit_user_path(current_user) %>
   <% end %>
+
 
 <!-- WRITER PROFILE PAGE -->
 <% else %>
@@ -24,53 +29,61 @@
     <%= link_to "Edit Info", edit_user_path(current_user) %>
   <% end %>
 
+
+
   <!-- temporary divider -->
   <div style="background-color: grey; height: 5vh;"></div>
 
   <!-- LE CV -->
-  <div class="">
-  <% if @user.id == current_user.id %>
-    <h2>Your Résumé</h2>
-    <%= link_to "Add an Experience", new_experience_path %>
-  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <div class="">
+            <% if @user.id == current_user.id %>
+              <h2>Your Résumé</h2>
+              <%= link_to "Add an Experience", new_experience_path %>
+            <% end %>
 
-      <!-- les expériences pro -->
-      <% if @work_experiences.empty? %>
-      <% else %>
-        <div class="">
-          <h3>EXPERIENCES</h3>
-          <% @work_experiences.each do |experience| %>
-            <div class="">
-              <h4><%= experience.title + " @ " + experience.organization %></h4>
-              <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
-              <p><%= experience.description %></p>
-              <% if @user.id == current_user.id %>
-                <%= link_to "Edit Experience", edit_experience_path(experience) %>
-              <% end %>
+                <!-- les expériences pro -->
+                <% if @work_experiences.empty? %>
+                <% else %>
+                  <div class="">
+                    <h3><i class="fa fa-wpforms" aria-hidden="true"></i> EXPERIENCES</h3>
+                    <% @work_experiences.each do |experience| %>
+                      <div class="">
+                        <h4><%= experience.title + " @ " + experience.organization %></h4>
+                        <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
+                        <p><%= experience.description %></p>
+                        <% if @user.id == current_user.id %>
+                          <%= link_to "Edit Experience", edit_experience_path(experience) %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+
+                <!-- les formations -->
+                <% if @educations.empty? %>
+                <% else %>
+                  <div class="">
+                    <h3><i class="fa fa-graduation-cap" aria-hidden="true"></i> EDUCATION</h3>
+                    <% @educations.each do |education| %>
+                      <div class="">
+                        <h4><%= education.title + ' @ ' + education.organization %></h4>
+                        <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s %><p>
+                        <p><%= education.description %></p>
+                        <% if @user.id == current_user.id %>
+                          <%= link_to "Edit Education", edit_experience_path(education) %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-
-      <!-- les formations -->
-      <% if @educations.empty? %>
-      <% else %>
-        <div class="">
-          <h3>EDUCATION</h3>
-          <% @educations.each do |education| %>
-            <div class="">
-              <h4><%= education.title + ' @ ' + education.organization %></h4>
-              <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s %><p>
-              <p><%= education.description %></p>
-              <% if @user.id == current_user.id %>
-                <%= link_to "Edit Education", edit_experience_path(education) %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-
+      </div>
+    </div>
   </div>
+
 
   <!-- fin du IF writer -->
 <% end %>
