@@ -51,12 +51,10 @@
           <h1><%= @user.first_name + " " + @user.last_name %></h1>
           <h3><%= @user.title %></h3>
           <p style="font-size: 30px; padding-top: 10px;"><%= @user.id == current_user.id && @user.price == nil ? "Fill your writer profile in, it only takes a minute" : "" %></p>
-          <h4><%= "Daily Price: #{@user.price}€" %></h4>
-          <h4><%= @user.available ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h4>
-          <% if @user.id == current_user.id %>
-            <%= link_to "Edit Info", edit_user_path(current_user) %>
-            <%= link_to "Vos missions", missions_path %>
+          <% if @user.price.nil? == false %>
+            <h4><%= "Daily Price: #{@user.price}€" %></h4>
           <% end %>
+          <h4><%= @user.available ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h4>
         </div>
         <br>
       </div>
@@ -64,6 +62,8 @@
         <div class="user-summary-book-button margin-right-5px">
           <% if @user.id != current_user.id %>
             <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
+          <% else @user.id == current_user %>
+            <%= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
           <% end %>
         </div>
       </div>
@@ -96,7 +96,14 @@
                         <% if @user.id == current_user.id %>
                           <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
                         <% end %>
-                        <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
+                        <br>
+                        <p class="display-inline"><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s + " >> " %></p>
+                        <% if (((experience.end_date - experience.start_date)/30.5).to_i/12) != 0 %>
+                          <p class="display-inline"><%=  (((experience.end_date - experience.start_date)/30.5).to_i/12).to_s + " year(s) " %></p>
+                        <% end %>
+                        <% if (((experience.end_date - experience.start_date)/30.5).to_i%12) != 0 %>
+                          <p class="display-inline"><%= (((experience.end_date - experience.start_date)/30.5).to_i%12).to_s + " month(s)" %><p>
+                        <% end %>
                         <p><%= experience.description %></p>
                       </div>
                     <% end %>
