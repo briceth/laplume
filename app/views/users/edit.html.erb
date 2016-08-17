@@ -1,5 +1,5 @@
 <!-- CLIENT PROFILE PAGE FORM  -->
-<% if current_user.writer? == false %>
+<% if current_user.writer == false %>
 
   <div class="container">
     <div class="row">
@@ -9,7 +9,7 @@
             <%= form.input :first_name %>
             <%= form.input :last_name %>
             <%= form.input :phone_number %>
-            <%= form.input :writer? %>
+            <%= form.input :writer %>
             <%= form.button :submit %>
           <% end %>
         </div>
@@ -29,7 +29,7 @@
             <%= form.input :last_name %>
             <%= form.input :title %>
             <%= form.input :price %>
-            <%= form.input :available? %>
+            <%= form.input :available %>
             <%= form.button :submit %>
           <% end %>
         </div>
