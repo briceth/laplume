@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="container">
+      <div class="row">
+        <h2><%= @mission.title  %></h2>
+          <p><%= @mission.description  %></p>
+          <p><%= @mission.category  %></p>
+          <p><%= @mission.status  %></p>
+      <%= link_to 'back', missions_path, class: "btn btn-danger" %>
+      <%= link_to "Update", new_mission_path, class: "btn btn-primary"%>
+      <%= link_to "Delete", missions_path, class: "btn btn-primary"%>
+    </div>
+  </div>
+</div>

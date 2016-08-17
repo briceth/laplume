@@ -28,10 +28,10 @@
 
   <div class="spacer"></div>
 
-
 <!-- WRITER PROFILE PAGE -->
 <% else %>
   <!-- writer basic info -->
+<<<<<<< HEAD
   <div class="container">
     <div class="row user-summary-all">
       <div class="col-xs-2">
@@ -48,6 +48,7 @@
               <h4><%= @user.available ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h4>
               <% if @user.id == current_user.id %>
                 <%= link_to "Edit Info", edit_user_path(current_user) %>
+                <%= link_to "Vos missions", missions_path %>
             </div>
             <br>
       </div>
