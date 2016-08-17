@@ -21,7 +21,7 @@
 .banner {
   color: white;
   text-align: center;
-  height: 100vh;
+  height: 93vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -39,6 +39,8 @@
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
 }
+
 #form-style {
-      padding: 0 80px;
+  width: 400px;
 }
+
