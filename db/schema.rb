@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20160816130140) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.boolean  "available?"
+    t.boolean  "available?",             default: true
     t.integer  "price"
     t.string   "title"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
