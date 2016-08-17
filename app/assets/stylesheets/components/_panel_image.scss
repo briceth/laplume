@@ -1,0 +1,26 @@
+.panel-body {
+  position: relative;
+  padding-bottom: 55%;
+}
+
+.img-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right:0;
+  &:before {
+    content: '';
+    vertical-align: middle;
+    display: inline-block;
+    width: 0;
+    height: 100%;
+  }
+}
+
+img {
+  vertical-align: middle;
+  display: inline-block;
+  max-width: 100%;
+  max-height:100%;
+}
