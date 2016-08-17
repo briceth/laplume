@@ -86,7 +86,7 @@
                 <% else %>
                   <div class="">
                     <h3><i class="fa fa-wpforms" aria-hidden="true"></i> EXPERIENCES</h3>
-                    <% @work_experiences.each do |experience| %>
+                    <% @work_experiences_sorted.each do |experience| %>
                       <div class="">
                         <h4><%= experience.title + " @ " + experience.organization %></h4>
                         <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>

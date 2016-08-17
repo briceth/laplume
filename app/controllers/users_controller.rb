@@ -3,7 +3,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @experiences = @user.experiences
     @work_experiences = @experiences.select { |experience| experience.category == "Experience" }
+    @work_experiences_sorted = @work_experiences.sort! { |a,b| b.end_date <=> a.end_date }
     @educations = @experiences.select { |experience| experience.category == "Education" }
+    @educations_sorted = @educations.sort! { |a,b| b.end_date <=> a.end_date }
   end
 
   def edit
