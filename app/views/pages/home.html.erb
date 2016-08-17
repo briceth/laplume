@@ -10,12 +10,10 @@
       <button type="submit" class="btn btn-default">Search</button>
     </form> -->
     <%= form_tag "#", id: "search-form" do %>
-      <%= text_field_tag :query, nil, id: "search-form", class: "form-control search-input", placeholder: "Biographe,..." %>
+      <%= text_field_tag :query, nil, id: "search-form", class: "form-control search-input", placeholder: "Medieval biographist" %>
       <%= text_field_tag :location, nil, id: "search-form", class: "form-control search-input", placeholder: "Paris" %>
       <%= submit_tag "Search", id: "search-form", class: "btn" %>
     <% end %>
   </div>
 </div>
 
-
-<i class="fa fa-wpforms" aria-hidden="true">
