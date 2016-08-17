@@ -9,6 +9,11 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+      <!-- Become a writer button -->
+      <% if current_user.writer? == false %>
+        <%= link_to "Become a writer", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
@@ -23,12 +28,12 @@
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to user_path(current_user) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <i class="fa fa-home"></i> <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
