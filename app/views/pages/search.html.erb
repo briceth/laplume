@@ -1,0 +1,7 @@
+       <% @writers.each do |writer| %>
+          <% writer.experiences.each do |experience| %>
+            <%= experience[:title] %>
+
+            <% end %>
+          <% end %>
+
