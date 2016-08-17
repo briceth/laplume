@@ -9,7 +9,10 @@
 
   <% if @user.id == current_user.id %>
     <%= link_to "Edit Info", edit_user_path(current_user) %>
+    <br>
+    <%= link_to "Book this plume", edit_user_path(current_user) %>
   <% end %>
+
 
 <!-- WRITER PROFILE PAGE -->
 <% else %>
@@ -23,6 +26,8 @@
   <% if @user.id == current_user.id %>
     <%= link_to "Edit Info", edit_user_path(current_user) %>
   <% end %>
+
+
 
   <!-- temporary divider -->
   <div style="background-color: grey; height: 5vh;"></div>
