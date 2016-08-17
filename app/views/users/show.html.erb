@@ -7,7 +7,10 @@
     <h1><%= @user.first_name + " " + @user.last_name %></h1>
   <% end %>
   <p><%= @user.id == current_user.id && @user.first_name.nil? ? "Fill your profile in, it only takes a minute" : "" %></p>
-  <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
+
+  <% if @user.photo? %>
+    <%= cl_image_tag @user.photo.path, width: 200, height: 300, crop: :fill %>
+  <% end %>
 
   <% if @user.id == current_user.id %>
     <%= link_to "Edit Info", edit_user_path(current_user) %>
@@ -21,7 +24,11 @@
   <h1><%= @user.first_name + " " + @user.last_name %></h1>
   <h3><%= @user.title %></h3>
   <p><%= @user.id == current_user.id && @user.price == nil ? "Fill your writer profile in, it only takes a minute" : "" %></p>
-  <img class="avatar-large" src="http://img.ohmymag.com/kate-middleton/catherine-middleton-est-une-nouvelle-femme_87550_w300.jpg">
+
+  <% if @user.photo? %>
+   <%= cl_image_tag @user.photo.path, width: 200, height: 300, crop: :fill %>
+  <% end %>
+
   <h4><%= "Daily Price: #{@user.price}€" %></h4>
   <h4><%= @user.available ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h4>
   <% if @user.id == current_user.id %>
