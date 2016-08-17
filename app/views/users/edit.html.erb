@@ -10,6 +10,7 @@
             <%= form.input :last_name %>
             <%= form.input :phone_number %>
             <%= form.input :writer %>
+            <%= form.input :photo, as: :attachinary %>
             <%= form.button :submit %>
           <% end %>
         </div>
@@ -17,7 +18,7 @@
     </div>
   </div>
 
-<!-- WRITE PROFILE PAGE FORM  -->
+<!-- WRITER PROFILE PAGE FORM  -->
 <% else %>
 
   <div class="container">
@@ -30,6 +31,7 @@
             <%= form.input :title %>
             <%= form.input :price %>
             <%= form.input :available %>
+            <%= form.input :photo, as: :attachinary %>
             <%= form.button :submit %>
           <% end %>
         </div>

@@ -1,5 +1,5 @@
 class MissionsController < ApplicationController
-before_action :set_mission, only: [:show, :edit]
+before_action :set_mission, only: [:show, :edit, :update, :destroy]
 
   def index
     @missions = Mission.all
@@ -28,7 +28,7 @@ before_action :set_mission, only: [:show, :edit]
 
   def update
     if @mission.update(mission_params)
-      redirect_to missions_path
+      redirect_to mission_path
     else
       render :edit
     end

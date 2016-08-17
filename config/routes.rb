@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
+
   devise_for :users
   root to: 'pages#home'
   get 'search', to: 'pages#search'
@@ -12,5 +14,4 @@ Rails.application.routes.draw do
   resources :missions do
     resources :offers, only: [:new, :create, :destroy, :edit, :update]
   end
-
 end
