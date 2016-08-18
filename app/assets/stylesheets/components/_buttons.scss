@@ -1,0 +1,10 @@
+.midnight-blue {
+  background-color: $midnight-blue;
+  border-width: 0;
+   &:hover {
+    background-color: $midnight-blue-80;
+   }
+   &:active {
+    background-color: $midnight-blue-80;
+   }
+}

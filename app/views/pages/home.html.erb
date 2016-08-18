@@ -2,7 +2,10 @@
   <div class="banner-content padded-bottom-15vh">
     <h1 class="text-center", id="banner-title" >Find your ghostwriter</h1>
     <br>
-    <h3 class="btn btn-large btn-danger"><%= link_to "View all writers", search_path, style: 'color:#FFFFFF; text-decoration:none;' %></h3>
-  </div>
+    <%= form_tag "#", id: "search-form" do %>
+      <%= text_field_tag :query, nil, id: "search-form", class: "form-control", placeholder: "Medieval biographist" %>
+      <%= text_field_tag :location, nil, id: "location-search-form", class: "form-control", placeholder: "Paris" %>
+      <%= link_to "Search", search_path, id: "search-form", class: "btn btn-primary midnight-blue" %>
+    <% end %>
 </div>
 
