@@ -10,8 +10,6 @@ class UsersController < ApplicationController
     @educations_sorted = @educations.sort! { |a,b| b.end_date <=> a.end_date }
   end
 
-  def edit
-  end
 
   def update
     @user = current_user
