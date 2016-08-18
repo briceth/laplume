@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'search', to: 'pages#search'
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
