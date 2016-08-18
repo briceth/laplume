@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
 
   resources :missions do
-    resources :offers, only: [:new, :create, :destroy, :edit, :update]
+    resources :offers, only: [:create, :update]
   end
 end
