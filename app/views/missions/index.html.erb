@@ -9,11 +9,12 @@
             <p><%= mission.description  %></p>
             <%= link_to "", mission_path(mission), class: "link-cover-all" %>
           </div>
+
+            <!-- Button trigger modal -->
              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
               Edit
             </button>
             <%= link_to "Delete mission", mission_path(mission), method: :delete, class: "btn btn-primary" %>
-            <!-- Button trigger modal -->
 
              <!-- Modal -->
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -35,7 +36,6 @@
                   </div>
                 </div>
               </div>
-
           <% end %>
       </div>
     </div>

@@ -1,0 +1,23 @@
+
+ <div class="container">
+    <div class="row">
+    <!-- BIEN CALER LE FORMULAIRE -->
+      <div class="col-xs-4 col-xs-offset-4 col-md-5 col-md-offset-1">
+      <%= simple_form_for [@mission, @offer] do |f| %>
+
+      <div class="form-inputs">
+      <%= f.input :mission_id, collection: @missions, prompt: 'Choose a mission' %>
+      </div>
+
+      <div class="form-inputs">
+        <%= f.input :status %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %> <%= link_to "Back", mission_path(@mission), class: "btn btn-primary" %>
+      </div>
+
+      <% end %>
+      </div>
+    </div>
+  </div>
