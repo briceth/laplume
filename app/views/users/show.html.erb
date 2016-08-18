@@ -7,11 +7,13 @@
     <div class="row user-summary-all">
       <div class="col-xs-2">
        <div class="client-summary-photo">
-        <% if @user.photo? %>
-           <%= cl_image_tag(@user.photo.path, { size: '125x125', crop: :thumb }) %>
+        <% if user_signed_in? && current_user.facebook_picture_url %>
+          <%= image_tag current_user.facebook_picture_url, height: 50, width: 50 %>
+        <% elsif @user.photo? %>
+           <%= cl_image_tag(@user.photo.path, { size: '125x125', crop: :thumb, class:"tata" }) %>
         <% else %>
             <%= image_tag "user-icon.png", class: "avatar-large margin-right-5px" %>
-          <% end %>
+        <% end %>
           </div>
         </div>
         <div class="col-xs-7">
@@ -19,12 +21,13 @@
             <% if @user.first_name != nil && @user.last_name != nil  %>
               <h1><%= @user.first_name + " " + @user.last_name %></h1>
             <% end %>
-            <p style="font-size: 30px; padding-top: 10px;"><%= @user.id == current_user.id && @user.first_name.nil? ? "Fill your profile in, it only takes a minute" : "" %></p>
+            <p style="font-size: 30px; padding-top: 10px;"><%= @user == current_user && @user.first_name.nil? ? "Fill your profile in, it only takes a minute" : "" %></p>
           </div>
         </div>
         <div class="col-xs-3">
-          <% if @user.id == current_user.id %>
-            <%= link_to "Edit Info", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
+          <% if @user == current_user %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditInfoModal">Edit Info</button>
+            <%#= link_to "Edit Info", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
           <% end %>
         </div>
       </div>
@@ -52,7 +55,7 @@
         <div class="user-summary-info">
           <h1><%= @user.first_name + " " + @user.last_name %></h1>
           <h3><%= @user.title %></h3>
-          <p style="font-size: 30px; padding-top: 10px;"><%= @user.id == current_user.id && @user.price == nil ? "Fill your writer profile in, it only takes a minute" : "" %></p>
+          <p style="font-size: 30px; padding-top: 10px;"><%= @user == current_user && @user.price == nil ? "Fill your writer profile in, it only takes a minute" : "" %></p>
           <% if @user.price.nil? == false %>
             <h4 class="display-inline"><%= "Daily Price: #{@user.price}€" %></h4>
           <% end %>
@@ -66,10 +69,13 @@
       </div>
       <div class="col-xs-12 col-sm-3">
         <div class="margin-right-5px">
+
           <% if @user.id != current_user.id %>
             <%= link_to "Book this Plume", new_offer_path(user: @user), class: "btn btn-primary", id: "booking-button" %>
-          <% else @user.id == current_user %>
-            <%= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
+          <% else @user == current_user %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditCVModal">Edit plume</button>
+            <%#= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
+
           <% end %>
         </div>
       </div>
@@ -87,7 +93,7 @@
             <% if @experiences.empty? == false %>
               <h2>Résumé</h2>
             <% end %>
-            <% if @user.id == current_user.id %>
+            <% if @user == current_user %>
               <% if @experiences.empty? == false %>
                 <%= link_to "Add an Experience", new_experience_path %>
               <% else %>
@@ -104,7 +110,7 @@
                     <% @work_experiences_sorted.each do |experience| %>
                       <div class="">
                         <h4 class="display-inline"><%= experience.title + " @ " + experience.organization %></h4>
-                        <% if @user.id == current_user.id %>
+                        <% if @user == current_user %>
                           <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
                         <% end %>
                         <br>
@@ -124,12 +130,13 @@
                 <!-- les formations -->
                 <% if @educations.empty? %>
                 <% else %>
+
                   <div class="">
                     <h3><i class="fa fa-graduation-cap" aria-hidden="true"></i> EDUCATION</h3>
-                    <% @educations.each do |education| %>
+                    <% @educations_sorted.each do |education| %>
                       <div class="">
                         <h4 class="display-inline"><%= education.title + ' @ ' + education.organization %></h4>
-                          <% if @user.id == current_user.id %>
+                          <% if @user == current_user %>
                             <%= link_to "Edit Education", edit_experience_path(education), class: "padded-left-5px" %>
                           <% end %>
                         <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s + " >> " + ([(education.end_date.year - education.start_date.year), 1].max ).to_s + " year(s)" %><p>
@@ -146,3 +153,52 @@
 
   <!-- fin du IF writer -->
 <% end %>
+
+
+<!-- modal Edit info user -->
+<div class="modal fade" id="EditInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([ current_user ]) do |form| %>
+            <%= form.input :first_name %>
+            <%= form.input :last_name %>
+            <%= form.input :phone_number %>
+            <%= form.input :writer %>
+            <%= form.input :photo, as: :attachinary %>
+            <%= form.button :submit %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- modal Edit plume writer-->
+
+<div class="modal fade" id="EditCVModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([ current_user ]) do |form| %>
+            <%= form.input :first_name %>
+            <%= form.input :last_name %>
+            <%= form.input :title %>
+            <%= form.input :price %>
+            <%= form.input :available %>
+            <%= form.input :photo, as: :attachinary %>
+            <%= form.button :submit %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

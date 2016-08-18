@@ -1,41 +1,39 @@
-<div class="wrapper">
+<div class="wrapper-mission">
   <div class="container">
     <div class="row relative">
       <div class="col-xs-12">
-          <h2 class="text-center">Mission Dashboard</h2>
           <% @missions.each do |mission| %>
           <div class="card-profil-search">
-            <h3><%= mission.title  %></h3>
+            <h3><%= mission.title %></h3>
             <p><%= mission.description  %></p>
             <%= link_to "", mission_path(mission), class: "link-cover-all" %>
           </div>
-
-            <!-- Button trigger modal -->
-             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-              Edit
-            </button>
-            <%= link_to "Delete mission", mission_path(mission), method: :delete, class: "btn btn-primary" %>
-
-             <!-- Modal -->
-              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for([ mission ]) do |form| %>
-                        <%= form.input :title %>
-                        <%= form.input :description %>
-                        <%#= form.input :category %>
-                        <%#= form.input :status %>
-                        <%= form.button :submit %>
-                      <% end %>
-                    </div>
+          <br>
+          <!-- Button Modal: Edit Mission -->
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditMissionModal">
+            Edit mission
+          </button>
+            <!-- Modal: Edit Mission / can't put it below, it needs to be in the loop  -->
+            <div class="modal fade" id="EditMissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for([ mission ]) do |form| %>
+                      <%= form.input :title %>
+                      <%= form.input :description, input_html: {style: "height: 150px;"} %>
+                      <%#= form.input :category %>
+                      <%#= form.input :status %>
+                      <%= form.button :submit %>
+                    <% end %>
                   </div>
                 </div>
               </div>
+            </div>
+          <%= link_to "Delete mission", mission_path(mission), method: :delete, class: "btn btn-primary" %>
           <% end %>
       </div>
     </div>
@@ -49,13 +47,37 @@
   <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <%= link_to "Add new mission", new_mission_path, class: "btn btn-primary" %>
+        <!-- Button Modal: Create Mission -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#NewMissionModal">
+        Add new mission
+        </button>
       </div>
     </div>
   </div>
 </div>
-
 <br>
 
+<!-- SCRIPTS -->
+
+<!-- Modal: Create Mission -->
+<div class="modal fade" id="NewMissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Create new Mission</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([ @mission ]) do |form| %>
+          <%= form.input :title %>
+          <%= form.input :description, input_html: {style: "height: 150px;"} %>
+          <%= form.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
