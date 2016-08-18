@@ -1,25 +1,28 @@
-.wrapper-profil {
-  padding-top: 20px;
+.card-profil-search {
+  position: relative;
+  margin-top: 60px;
+  height: 200px;
+  border-width: 0.5px;
+  padding: 20px 20px;
+  border-style: solid;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-color: $midnight-blue-30;
+    &:hover {
+    background-color: $grey;
+    border-width: 0.5px;
+    border-color: $midnight-blue-50;
+  }
 }
 
-.infos-profil {
-
+.search-description {
+  position: absolute;
+  height: 80%;
+  width: 30%;
+  left: 20%;
 }
 
-.identity-card {
-  position: relative
+.btn-no-links {
+  color: white;
+  text-decoration: none;
 }
-
-.pricing-profil {
-  position: relative
-}
-
-.wrapper-projects {
-
-}
-
-.card-project {
-
-}
-
-

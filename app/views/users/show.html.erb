@@ -37,7 +37,7 @@
 
   <div class="container">
     <div class="row user-summary-all">
-      <div class="col-xs-2">
+      <div class="col-xs-12 col-sm-2">
         <div class="user-summary-photo">
           <% if @user.photo? %>
             <%= cl_image_tag(@user.photo.path, { size: '125x125', crop: :thumb }) %>
@@ -46,24 +46,30 @@
           <% end %>
         </div>
       </div>
-      <div class="col-xs-7">
+      <div class="col-xs-12 col-sm-7">
         <div class="user-summary-info">
           <h1><%= @user.first_name + " " + @user.last_name %></h1>
           <h3><%= @user.title %></h3>
           <p style="font-size: 30px; padding-top: 10px;"><%= @user.id == current_user.id && @user.price == nil ? "Fill your writer profile in, it only takes a minute" : "" %></p>
-          <h4><%= "Daily Price: #{@user.price}€" %></h4>
-          <h4><%= @user.available ? "#{@user.first_name} is available at the moment" : "#{@user.first_name} is not available at the moment" %></h4>
-          <% if @user.id == current_user.id %>
-            <%= link_to "Edit Info", edit_user_path(current_user) %>
-            <%= link_to "Vos missions", missions_path %>
+          <% if @user.price.nil? == false %>
+            <h4 class="display-inline"><%= "Daily Price: #{@user.price}€" %></h4>
+          <% end %>
+          <% if @user.available == true %>
+            <h4 class="display-inline padded-left-5px"><i class="fa fa-check" aria-hidden="true"></i> Available</h4>
+          <% else %>
+            <h4 class="display-inline padded-left-5px"><i class="fa fa-times" aria-hidden="true"></i></i> Not available</h4>
+          <% end %>
         </div>
         <br>
       </div>
-      <div class="col-xs-3">
+      <div class="col-xs-12 col-sm-3">
         <div class="user-summary-book-button margin-right-5px">
-          <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
+          <% if @user.id != current_user.id %>
+            <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
+          <% else @user.id == current_user %>
+            <%= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
+          <% end %>
         </div>
-        <% end %>
       </div>
     </div>
   </div>
@@ -76,9 +82,16 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
           <div class="">
+            <% if @experiences.empty? == false %>
+              <h2>Résumé</h2>
+            <% end %>
             <% if @user.id == current_user.id %>
-              <h2>Your Résumé</h2>
-              <%= link_to "Add an Experience", new_experience_path %>
+              <% if @experiences.empty? == false %>
+                <%= link_to "Add an Experience", new_experience_path %>
+              <% else %>
+                <br>
+                <%= link_to "Build your CV", new_experience_path, class: "text-center btn btn-primary", id: "booking-button" %>
+              <% end %>
             <% end %>
 
                 <!-- les expériences pro -->
@@ -86,14 +99,21 @@
                 <% else %>
                   <div class="">
                     <h3><i class="fa fa-wpforms" aria-hidden="true"></i> EXPERIENCES</h3>
-                    <% @work_experiences.each do |experience| %>
+                    <% @work_experiences_sorted.each do |experience| %>
                       <div class="">
-                        <h4><%= experience.title + " @ " + experience.organization %></h4>
-                        <p><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s %><p>
-                        <p><%= experience.description %></p>
+                        <h4 class="display-inline"><%= experience.title + " @ " + experience.organization %></h4>
                         <% if @user.id == current_user.id %>
-                          <%= link_to "Edit Experience", edit_experience_path(experience) %>
+                          <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
                         <% end %>
+                        <br>
+                        <p class="display-inline"><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s + " >> " %></p>
+                        <% if (((experience.end_date - experience.start_date)/30.5).to_i/12) != 0 %>
+                          <p class="display-inline"><%=  (((experience.end_date - experience.start_date)/30.5).to_i/12).to_s + " year(s) " %></p>
+                        <% end %>
+                        <% if (((experience.end_date - experience.start_date)/30.5).to_i%12) != 0 %>
+                          <p class="display-inline"><%= (((experience.end_date - experience.start_date)/30.5).to_i%12).to_s + " month(s)" %><p>
+                        <% end %>
+                        <p><%= experience.description %></p>
                       </div>
                     <% end %>
                   </div>
@@ -106,12 +126,12 @@
                     <h3><i class="fa fa-graduation-cap" aria-hidden="true"></i> EDUCATION</h3>
                     <% @educations.each do |education| %>
                       <div class="">
-                        <h4><%= education.title + ' @ ' + education.organization %></h4>
-                        <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s %><p>
+                        <h4 class="display-inline"><%= education.title + ' @ ' + education.organization %></h4>
+                          <% if @user.id == current_user.id %>
+                            <%= link_to "Edit Education", edit_experience_path(education), class: "padded-left-5px" %>
+                          <% end %>
+                        <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s + " >> " + ([(education.end_date.year - education.start_date.year), 1].max ).to_s + " year(s)" %><p>
                         <p><%= education.description %></p>
-                        <% if @user.id == current_user.id %>
-                          <%= link_to "Edit Education", edit_experience_path(education) %>
-                        <% end %>
                       </div>
                     <% end %>
                   </div>
