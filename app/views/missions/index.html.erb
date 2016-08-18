@@ -1,15 +1,19 @@
 <div class="wrapper">
   <div class="container">
-      <div class="row">
-        <h2>Voici vos mission</H2>
-        <% @missions.each do |mission| %>
-          <h3><%= mission.title  %></h3>
-          <p><%= mission.description  %></p>
-          <p><strong><%= mission.category  %></strong></p>
-          <p><strong><%= mission.status  %></strong></p>
-          <%= link_to 'allez voir', mission_path(mission), class: "btn btn-warning" %>
-        <% end %>
-        </div>
-      <div class="text-center"> <%= link_to "Créer une mission", new_mission_path, class: "btn btn-primary"%></div>
+    <div class="row relative">
+      <div class="col-xs-12">
+          <h2>Mission Dashboard</h2>
+          <% @missions.each do |mission| %>
+          <div class="card-profil-search">
+            <h3><%= mission.title  %></h3>
+            <p><%= mission.description  %></p>
+            <%= link_to "", mission_path(mission), class: "link-cover-all" %>
+          </div>
+ <%= link_to "Delete mission", mission_path(mission), method: :delete, class: "btn btn-primary" %>
+          <% end %>
+      </div>
+    </div>
   </div>
 </div>
+ <%= link_to "Add new mission", new_mission_path, class: "btn btn-primary" %>
+
