@@ -8,9 +8,9 @@
       <div class="col-xs-2">
        <div class="client-summary-photo">
         <% if user_signed_in? && current_user.facebook_picture_url %>
-          <%= image_tag current_user.facebook_picture_url, height: 50, width: 50 %>
+          <%= image_tag current_user.facebook_picture_url, height: 50, width: 50, class:"tata" %>
         <% elsif @user.photo? %>
-           <%= cl_image_tag(@user.photo.path, { size: '125x125', crop: :thumb }) %>
+           <%= cl_image_tag(@user.photo.path, { size: '125x125', crop: :thumb, class:"tata" }) %>
         <% else %>
             <%= image_tag "user-icon.png", class: "avatar-large margin-right-5px" %>
         <% end %>
