@@ -67,7 +67,7 @@
       <div class="col-xs-12 col-sm-3">
         <div class="margin-right-5px">
           <% if @user.id != current_user.id %>
-            <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
+            <%= link_to "Book this Plume", new_offer_path(user: @user), class: "btn btn-primary", id: "booking-button" %>
           <% else @user.id == current_user %>
             <%= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
           <% end %>
