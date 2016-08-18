@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'messages/new'
+
+  get 'messages/create'
+
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -9,9 +13,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
-
-
-  post '/create_mission_and_offer', to: 'missions#create_mission_and_offer', as: 'create_mission_and_offer'
 
   resources :missions
 

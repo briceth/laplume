@@ -4,6 +4,7 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
   def index
     @missions = Mission.all
     @mission = Mission.new
+    @users = User.all
   end
 
   def show
@@ -19,21 +20,21 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
     end
   end
 
-  def create_mission_and_offer
-    @mission = Mission.new(mission_params)
-    @mission.user = current_user
-    if @mission.save
-      @offer = Offer.new(mission: @mission, user_id: params[:offer_user], status: 'pending')
-      if @offer.save
-       redirect_to missions_path
-      else
-        # TODO
-        # render form offer
-      end
-    else
-      # TODO ?
-    end
-  end
+  # def create_mission_and_offer
+  #   @mission = Mission.new(mission_params)
+  #   @mission.user = current_user
+  #   if @mission.save
+  #     @offer = Offer.new(mission: @mission, user_id: params[:offer_user], status: 'pending')
+  #     if @offer.save
+  #      redirect_to missions_path
+  #     else
+  #       # TODO
+  #       # render form offer
+  #     end
+  #   else
+  #     # TODO ?
+  #   end
+  # end
 
   def edit
   end
