@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
    skip_before_action :authenticate_user!, only: [:show]
 
+
   def show
     @user = User.find(params[:id])
     @experiences = @user.experiences
@@ -10,19 +11,10 @@ class UsersController < ApplicationController
     @educations_sorted = @educations.sort! { |a,b| b.end_date <=> a.end_date }
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
   def update
     @user = current_user
     @user.update(user_params)
     @user.save
-    redirect_to user_path(@user)
-  end
-
-  def destroy
-    @user.destroy
     redirect_to user_path(@user)
   end
 

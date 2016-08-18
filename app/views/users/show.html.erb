@@ -138,6 +138,7 @@
                         <h4 class="display-inline"><%= education.title + ' @ ' + education.organization %></h4>
                           <% if @user == current_user %>
                             <%= link_to "Edit Education", edit_experience_path(education), class: "padded-left-5px" %>
+                            <%= link_to "Delete", experience_path(education), method: :delete %>
                           <% end %>
                         <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s + " >> " + ([(education.end_date.year - education.start_date.year), 1].max ).to_s + " year(s)" %><p>
                         <p><%= education.description %></p>

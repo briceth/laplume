@@ -21,13 +21,13 @@ class ExperiencesController < ApplicationController
     @user = current_user
     @experience = Experience.find(params[:id])
     @experience.update(experience_params)
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   def destroy
     @experience = Experience.find(params[:id])
     @experience.destroy
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   private
