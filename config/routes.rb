@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'search', to: 'pages#search'
 
-  resources :users, only: [:show, :update]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :users, only: [:show, :edit, :update]
 
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
 
 
-  resources :missions do
-    resources :offers, only: [:create, :update]
-  end
+  post '/create_mission_and_offer', to: 'missions#create_mission_and_offer', as: 'create_mission_and_offer'
+
+  resources :missions
+
+  resources :offers, only: [:new, :create, :update]
+
 end

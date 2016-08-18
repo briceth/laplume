@@ -3,7 +3,7 @@ class CreateOffers < ActiveRecord::Migration[5.0]
     create_table :offers do |t|
       t.references :user, foreign_key: true
       t.references :mission, foreign_key: true
-      t.string :status
+      t.string :status, default: "Pending"
 
       t.timestamps
     end
