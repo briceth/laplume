@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   resources :missions
 
-  resources :offers, only: [:new, :create, :update]
+  resources :offers, only: [:new, :create, :update, :show]
 
 end
