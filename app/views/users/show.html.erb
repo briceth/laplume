@@ -26,7 +26,8 @@
         </div>
         <div class="col-xs-3">
           <% if @user == current_user %>
-            <%= link_to "Edit Info", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditInfoModal">Edit Info</button>
+            <%#= link_to "Edit Info", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
           <% end %>
         </div>
       </div>
@@ -71,7 +72,8 @@
           <% if @user != current_user %>
             <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
           <% else @user == current_user %>
-            <%= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditCVModal">Edit plume</button>
+            <%#= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
           <% end %>
         </div>
       </div>
@@ -148,3 +150,52 @@
 
   <!-- fin du IF writer -->
 <% end %>
+
+
+<!-- modal Edit info user -->
+<div class="modal fade" id="EditInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([ current_user ]) do |form| %>
+            <%= form.input :first_name %>
+            <%= form.input :last_name %>
+            <%= form.input :phone_number %>
+            <%= form.input :writer %>
+            <%= form.input :photo, as: :attachinary %>
+            <%= form.button :submit %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- modal Edit plume writer-->
+
+<div class="modal fade" id="EditCVModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([ current_user ]) do |form| %>
+            <%= form.input :first_name %>
+            <%= form.input :last_name %>
+            <%= form.input :title %>
+            <%= form.input :price %>
+            <%= form.input :available %>
+            <%= form.input :photo, as: :attachinary %>
+            <%= form.button :submit %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
