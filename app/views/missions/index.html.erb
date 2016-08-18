@@ -2,18 +2,60 @@
   <div class="container">
     <div class="row relative">
       <div class="col-xs-12">
-          <h2>Mission Dashboard</h2>
+          <h2 class="text-center">Mission Dashboard</h2>
           <% @missions.each do |mission| %>
           <div class="card-profil-search">
             <h3><%= mission.title  %></h3>
             <p><%= mission.description  %></p>
             <%= link_to "", mission_path(mission), class: "link-cover-all" %>
           </div>
+
+            <!-- Button trigger modal -->
+             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              Edit
+            </button>
             <%= link_to "Delete mission", mission_path(mission), method: :delete, class: "btn btn-primary" %>
+
+             <!-- Modal -->
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <%= simple_form_for([ mission ]) do |form| %>
+                        <%= form.input :title %>
+                        <%= form.input :description %>
+                        <%#= form.input :category %>
+                        <%#= form.input :status %>
+                        <%= form.button :submit %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
           <% end %>
       </div>
     </div>
   </div>
 </div>
- <%= link_to "Add new mission", new_mission_path, class: "btn btn-primary" %>
+
+<br>
+<br>
+
+<div class="text-center">
+  <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <%= link_to "Add new mission", new_mission_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+
 

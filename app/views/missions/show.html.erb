@@ -5,10 +5,10 @@
         <h4><%= @mission.title  %></h4>
         <h3>Description:</h3>
         <h6><%= @mission.description  %></h6>
-        <h3>Category:</h3>
-        <h4><%= @mission.category  %></h4>
+    <!--     <h3>Category:</h3>
+        <h4><%#= @mission.category  %></h4>
         <h3>Status:</h3>
-        <h4><%= @mission.status  %></h4>
+        <h4><%#= @mission.status  %></h4> -->
         <br>
       <%= link_to 'back', missions_path, class: "btn btn-danger" %>
       <!-- Button trigger modal -->
@@ -16,7 +16,7 @@
         Edit
       </button>
       <%= link_to "Delete", mission_path, class: "btn btn-primary", method: :delete %>
-    </div>
+      </div>
   </div>
 </div>
 
@@ -34,8 +34,8 @@
         <%= simple_form_for([ @mission ]) do |form| %>
           <%= form.input :title %>
           <%= form.input :description %>
-          <%= form.input :category %>
-          <%= form.input :status %>
+          <%#= form.input :category %>
+          <%#= form.input :status %>
           <%= form.button :submit %>
         <% end %>
       </div>
