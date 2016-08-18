@@ -4,7 +4,7 @@
   <div class="row">
     <%= link_to user_path(writer) do %>
       <div class="card-profil-search" >
-        <div class="col-xs-3">
+        <div class="col-xs-2">
           <div class="panel-body">
             <div class="img-container">
               <% if writer.photo? %>
@@ -16,17 +16,25 @@
           </div>
         </div>
 
-        <div class="col-xs-3">
-          <h4><%= writer.first_name %> <%= writer.last_name %></h4><br>
+        <div class="col-xs-4">
+          <h3><%= writer.first_name %> <%= writer.last_name %></h3>
           <%= writer.title %>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-xs-4">
+          <div class="tag-profil"
+            <ul class="list-inline">
+              <li class="results-item-keyword">Biography</li>
+              <li class="results-item-keyword">Content marketing</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="col-xs-3">
-          Tarif par jour : <br>
-          <%= writer.price %>
+        <div class="col-xs-2">
+          <div class="circle multi-line">
+            <strong>Daily rate :</strong> <br>
+            <span><%= writer.price %> €</span>
+          </div>
         </div>
       </div>
     <% end %>
