@@ -19,11 +19,11 @@
             <% if @user.first_name != nil && @user.last_name != nil  %>
               <h1><%= @user.first_name + " " + @user.last_name %></h1>
             <% end %>
-            <p style="font-size: 30px; padding-top: 10px;"><%= @user.id == current_user.id && @user.first_name.nil? ? "Fill your profile in, it only takes a minute" : "" %></p>
+            <p style="font-size: 30px; padding-top: 10px;"><%= @user == current_user && @user.first_name.nil? ? "Fill your profile in, it only takes a minute" : "" %></p>
           </div>
         </div>
         <div class="col-xs-3">
-          <% if @user.id == current_user.id %>
+          <% if @user == current_user %>
             <%= link_to "Edit Info", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
           <% end %>
         </div>
@@ -52,7 +52,7 @@
         <div class="user-summary-info">
           <h1><%= @user.first_name + " " + @user.last_name %></h1>
           <h3><%= @user.title %></h3>
-          <p style="font-size: 30px; padding-top: 10px;"><%= @user.id == current_user.id && @user.price == nil ? "Fill your writer profile in, it only takes a minute" : "" %></p>
+          <p style="font-size: 30px; padding-top: 10px;"><%= @user == current_user && @user.price == nil ? "Fill your writer profile in, it only takes a minute" : "" %></p>
           <% if @user.price.nil? == false %>
             <h4 class="display-inline"><%= "Daily Price: #{@user.price}€" %></h4>
           <% end %>
@@ -66,9 +66,9 @@
       </div>
       <div class="col-xs-12 col-sm-3">
         <div class="margin-right-5px">
-          <% if @user.id != current_user.id %>
+          <% if @user != current_user %>
             <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
-          <% else @user.id == current_user %>
+          <% else @user == current_user %>
             <%= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
           <% end %>
         </div>
@@ -87,7 +87,7 @@
             <% if @experiences.empty? == false %>
               <h2>Résumé</h2>
             <% end %>
-            <% if @user.id == current_user.id %>
+            <% if @user == current_user %>
               <% if @experiences.empty? == false %>
                 <%= link_to "Add an Experience", new_experience_path %>
               <% else %>
@@ -104,7 +104,7 @@
                     <% @work_experiences_sorted.each do |experience| %>
                       <div class="">
                         <h4 class="display-inline"><%= experience.title + " @ " + experience.organization %></h4>
-                        <% if @user.id == current_user.id %>
+                        <% if @user == current_user %>
                           <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
                         <% end %>
                         <br>
@@ -129,7 +129,7 @@
                     <% @educations.each do |education| %>
                       <div class="">
                         <h4 class="display-inline"><%= education.title + ' @ ' + education.organization %></h4>
-                          <% if @user.id == current_user.id %>
+                          <% if @user == current_user %>
                             <%= link_to "Edit Education", edit_experience_path(education), class: "padded-left-5px" %>
                           <% end %>
                         <p><%= education.start_date.year.to_s + " - " + education.end_date.year.to_s + " >> " + ([(education.end_date.year - education.start_date.year), 1].max ).to_s + " year(s)" %><p>
