@@ -1,49 +1,21 @@
-<div>
-<!-- MISSION -->
-  <div id="wrapper-mission">
-          <h2>Title</h2>
+<div class="wrapper">
+
+<div class="wrapper-mission">
+  <h2>Title</h2>
           <h4><%= @mission.title  %></h4>
-          <h3>Description:</h3>
-          <h6><%= @mission.description  %></h6>
           <br>
         <%= link_to 'back', missions_path, class: "btn btn-danger" %>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#MissionEditModal">
-          Edit
-        </button>
-        <%= link_to "Delete", mission_path, class: "btn btn-primary", method: :delete %>
-  </div>
 
+</div>
 
   <!-- OFFERS -->
-  <div id="wrapper-offers" style= "background-color: black;">
+  <div class="wrapper-offers">
 
 
   </div>
-
-
-
-
 </div>
-<!-- SCRIPT -->
 
-<!-- Modal -->
-<div class="modal fade" id="MissionEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit</h4>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for([ @mission ]) do |form| %>
-          <%= form.input :title %>
-          <%= form.input :description %>
-          <%#= form.input :category %>
-          <%#= form.input :status %>
-          <%= form.button :submit %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
+
