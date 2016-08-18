@@ -5,7 +5,7 @@
     <%= form_tag "#", id: "search-form" do %>
       <%= text_field_tag :query, nil, id: "search-form", class: "form-control", placeholder: "Medieval biographist" %>
       <%= text_field_tag :location, nil, id: "location-search-form", class: "form-control", placeholder: "Paris" %>
-      <%= submit_tag "Search", id: "search-form", class: "btn" %>
+      <%= link_to "Search", search_path, id: "search-form", class: "btn btn-primary midnight-blue" %>
     <% end %>
 </div>
 
