@@ -1,18 +1,32 @@
 <div class="wrapper-mission">
   <div class="container">
     <div class="row relative">
-      <div class="col-xs-12">
           <% @missions.each do |mission| %>
+      <div class="col-md-12">
           <div class="card-profil-search">
             <h3><%= mission.title %></h3>
             <p><%= mission.description  %></p>
 
+
+            <div class="row">
+            <div class="col-sm-8"></div>
+              <div class="col-sm-4">
+                <% mission.offers.each do |offer| %>
+                  <u>Writter(s) on the the project</u>
+                  <p><%= offer.user.first_name %> <%= offer.user.last_name %></p>
+                <% end %>
+              </div>
+            </div>
           </div>
+
           <br>
+
           <!-- Button Modal: Edit Mission -->
+
            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditMissionModal">
             Edit
           </button>
+
             <!-- Modal: Edit Mission / can't put it below, it needs to be in the loop  -->
             <div class="modal fade" id="EditMissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
@@ -32,8 +46,8 @@
               </div>
             </div>
           <%= link_to "Delete", mission_path(mission), method: :delete, class: "btn btn-primary" %>
-          <% end %>
       </div>
+          <% end %>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
   def index
     @missions = Mission.all
     @mission = Mission.new
+    @users = User.all
   end
 
   def show

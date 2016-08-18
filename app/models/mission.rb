@@ -1,6 +1,7 @@
 class Mission < ApplicationRecord
   belongs_to :user
-  has_many :offers
+  has_many :offers, dependent: :destroy
+
 
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true
