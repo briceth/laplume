@@ -9,10 +9,6 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
   def show
   end
 
-  def new
-    @mission = Mission.new
-  end
-
   def create
     @mission = Mission.new(mission_params)
     @mission.user = current_user
