@@ -69,11 +69,13 @@
       </div>
       <div class="col-xs-12 col-sm-3">
         <div class="margin-right-5px">
-          <% if @user != current_user %>
-            <%= link_to "Book this Plume", missions_path, class: "btn btn-primary", id: "booking-button" %>
+
+          <% if @user.id != current_user.id %>
+            <%= link_to "Book this Plume", new_offer_path(user: @user), class: "btn btn-primary", id: "booking-button" %>
           <% else @user == current_user %>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditCVModal">Edit plume</button>
             <%#= link_to "Edit Plume", edit_user_path(current_user), class: "btn btn-primary", id: "booking-button" %>
+
           <% end %>
         </div>
       </div>
