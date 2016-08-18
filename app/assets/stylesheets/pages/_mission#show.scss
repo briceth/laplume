@@ -1,7 +1,25 @@
-#wrapper-mission {
-  width: 40%;
+.wrapper {
+
 }
 
-#wrapper-offers {
-  width: 60%;
+.wrapper-mission {
+  background-color: #454545;
+
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  left: 0px;
+  top: 70px;
+  bottom: 0px;
+}
+
+.wrapper-offers {
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  margin-left: 300px;
+  margin-right: 100px;
 }
