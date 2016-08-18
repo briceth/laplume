@@ -44,7 +44,9 @@
     <div class="row user-summary-all">
       <div class="col-xs-12 col-sm-2">
         <div class="user-summary-photo">
-          <% if @user.photo? %>
+          <% if user_signed_in? && current_user.facebook_picture_url %>
+            <%= image_tag current_user.facebook_picture_url, height: 50, width: 50 %>
+          <% elsif @user.photo? %>
             <%= cl_image_tag(@user.photo.path, { size: '125x125', crop: :thumb }) %>
           <% else %>
             <%= image_tag "user-icon.png", class: "avatar-large margin-right-5px" %>
@@ -112,6 +114,7 @@
                         <h4 class="display-inline"><%= experience.title + " @ " + experience.organization %></h4>
                         <% if @user == current_user %>
                           <%= link_to "Edit Experience", edit_experience_path(experience), class: "padded-left-5px" %>
+                          <%= link_to "Delete", experience_path(experience), method: :delete %>
                         <% end %>
                         <br>
                         <p class="display-inline"><%= experience.start_date.month.to_s + "/" + experience.start_date.year.to_s + " - " + experience.end_date.month.to_s + "/" + experience.end_date.year.to_s + " >> " %></p>
