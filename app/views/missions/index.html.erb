@@ -6,7 +6,6 @@
           <div class="card-profil-search">
             <h3><%= mission.title %></h3>
             <p><%= mission.description  %></p>
-            <%= link_to "", mission_path(mission), class: "link-cover-all" %>
           </div>
           <br>
           <!-- Button Modal: Edit Mission -->
@@ -33,7 +32,7 @@
                 </div>
               </div>
             </div>
-          <%= link_to "Delete mission", mission_path(mission), method: :delete, class: "btn btn-primary" %>
+          <%= link_to "Delete", mission_path(mission), method: :delete, class: "btn btn-primary" %>
           <% end %>
       </div>
     </div>
@@ -49,7 +48,7 @@
         <div class="col-xs-12">
         <!-- Button Modal: Create Mission -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#NewMissionModal">
-        Add new mission
+        New
         </button>
       </div>
     </div>
