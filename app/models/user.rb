@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_attachment :photo
 
   has_many :experiences
-  has_many :missions, through: :offers
-  has_many :offers, through: :missions
+  has_many :missions
+  has_many :offers
 end
