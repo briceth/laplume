@@ -3,6 +3,7 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
 
   def index
     @missions = Mission.all
+    @mission = Mission.new
   end
 
   def show

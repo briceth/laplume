@@ -13,7 +13,7 @@
         <br>
       <%= link_to 'back', missions_path, class: "btn btn-danger" %>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#MissionEditModal">
         Edit
       </button>
       <%= link_to "Delete", mission_path, class: "btn btn-primary", method: :delete %>
@@ -24,7 +24,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="MissionEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
