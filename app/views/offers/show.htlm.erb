@@ -1,0 +1,12 @@
+<!-- this is the page where a client will see the messages sent by a writer concerning an offer -->
+
+<% @messages_sorted.each do |message| %>
+  <% if message.user = current %>
+  <p><%= message.content + " - you " %></p>
+
+
+
+  <% end %>
+<% message %>
+
+
