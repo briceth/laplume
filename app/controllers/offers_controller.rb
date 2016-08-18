@@ -1,32 +1,21 @@
 class OffersController < ApplicationController
 
-  before_action :set_mission, only: [:create]
-
   def new
     @offer = Offer.new
-    @mission = Mission.new
-    # @user = User.find(params[:format].to_i)
+    @missions = current_user.missions
   end
 
-  # def create
-  #   @user = User.find(params[:format].to_i)
-  #   @mission = Mission.new
-  #   @offer = Offer.new(status: "pending", mission: @mission, user: @user )
-  #   if @offer.save
-  #     redirect_to mission_path(@mission)
-  #   else
-  #     render "missions/show"
-  #   end
-  # end
+  def create
+    @mission = Mission.find(offer_params[:mission])
+    @offer = Offer.new(mission: @mission)
+    @offer.user = current_user
+    redirect_to missions_path
+  end
 
   private
 
-  def set_mission
-    @mission = Mission.find(params[:mission_id])
-  end
-
-  def user_params
-    params.require(:user).permit(:id)
+  def offer_params
+    params.require(:offer).permit(:mission)
   end
 
 end

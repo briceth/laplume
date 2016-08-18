@@ -10,9 +10,6 @@ Rails.application.routes.draw do
 
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
 
-
-  post '/create_mission_and_offer', to: 'missions#create_mission_and_offer', as: 'create_mission_and_offer'
-
   resources :missions
 
   resources :offers, only: [:new, :create, :update]
