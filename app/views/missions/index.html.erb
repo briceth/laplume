@@ -70,11 +70,11 @@
         <h4 class="modal-title" id="myModalLabel">Create new Mission</h4>
       </div>
       <div class="modal-body">
-            <%= simple_form_for([ @mission ]) do |form| %>
-              <%= form.input :title %>
-              <%= form.input :description, input_html: {style: "height: 150px;"} %>
-              <%= form.button :submit %>
-            <% end %>
+        <%= simple_form_for([ @mission ]) do |form| %>
+          <%= form.input :title %>
+          <%= form.input :description, input_html: {style: "height: 150px;"} %>
+          <%= form.button :submit %>
+        <% end %>
       </div>
     </div>
   </div>
