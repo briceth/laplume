@@ -2,46 +2,45 @@
 <% @writers.each do |writer| %>
 <div class="container">
   <div class="row">
-    <%= link_to user_path(writer) do %>
-      <div class="card-profil-search" >
-        <div class="col-xs-2">
-          <div class="panel-body">
-            <div class="img-container">
-              <% if writer.photo? %>
-                <%= cl_image_tag(writer.photo.path, { size: '125x125', crop: :thumb }) %>
-              <% else %>
-                <%= image_tag "user-icon.png", class: "avatar-large margin-right-5px" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-4">
-          <h3><%= writer.first_name %> <%= writer.last_name %></h3>
-          <%= writer.title %>
-        </div>
-
-        <div class="col-xs-4">
-          <div class="tag-profil"
-            <ul class="list-inline">
-              <li class="results-item-keyword">Biography</li>
-              <li class="results-item-keyword">Content marketing</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-xs-2">
-          <div class="circle multi-line">
-            <strong>Daily rate:</strong> <br>
-            <% if  writer.price.nil? %>
-              <span><p>on request</p></span>
-            <% else  %>
-              <span><p><%= writer.price.to_s + "€" %></p></span>
+    <div class="card-profil-search" >
+      <div class="col-xs-2">
+        <div class="panel-body">
+          <div class="img-container">
+            <% if writer.photo? %>
+              <%= cl_image_tag(writer.photo.path, { size: '125x125', crop: :thumb }) %>
+            <% else %>
+              <%= image_tag "user-icon.png", class: "avatar-large margin-right-5px" %>
             <% end %>
           </div>
         </div>
       </div>
-    <% end %>
+
+      <div class="col-xs-4">
+        <h3><%= writer.first_name %> <%= writer.last_name %></h3>
+        <%= writer.title %>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="tag-profil"
+          <ul class="list-inline">
+            <li class="results-item-keyword">Biography</li>
+            <li class="results-item-keyword">Content marketing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-xs-2">
+        <div class="circle multi-line">
+          <strong>Daily rate:</strong> <br>
+          <% if  writer.price.nil? %>
+            <span><p>on request</p></span>
+          <% else  %>
+            <span><p><%= writer.price.to_s + "€" %></p></span>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to "", user_path(writer), class: "link-cover-all" %>
+    </div>
   </div>
 </div>
 <% end %>

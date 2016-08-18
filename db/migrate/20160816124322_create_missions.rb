@@ -5,8 +5,6 @@ class CreateMissions < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :description
       t.string :category
-      t.string :status
-
       t.timestamps
     end
   end
