@@ -4,6 +4,7 @@
       <% if @missions.nil? == true %>
         <h3 class="text-center">you haven't created or taken any missions</h3>
       <% else %>
+        <h2 class="text-center">Missions Created</h2>
         <% @missions_created.each do |mission| %>
           <div class="row">
             <div class="col-xs-12">
@@ -65,22 +66,23 @@
 <!-- MISSIONS ASSIGNED -->
 <% if current_user.offers.empty? %>
 <% else %>
+<h2 class="text-center">Missions Assigned</h2>
   <div class="wrapper-blue">
-    <div class="blued">
-      <div class="container">
-        <div class="row">
-          <% current_user.offers.each do |offer| %>
-              <% mission = offer.mission %>
-              <div class="mission-important">
-                <h3><%= mission.title %></h3>
-                <br>
-                <p><%= mission.description  %></p>
-              </div>
-              <strong><p><%=  link_to "Manage", offer_path(offer), class: "btn btn-primary" %></p></strong>
-           <% end %>
+      <div class="blued">
+        <div class="container">
+          <div class="row">
+            <% current_user.offers.each do |offer| %>
+                <% mission = offer.mission %>
+                <div class="mission-important">
+                  <h3><%= mission.title %></h3>
+                  <br>
+                  <p><%= mission.description  %></p>
+                </div>
+                <strong><p><%=  link_to "Manage", offer_path(offer), class: "btn btn-primary" %></p></strong>
+             <% end %>
+            </div>
           </div>
-        </div>
-      </div>
+        </div>"
     </div>
 <% end %>
 <!-- SCRIPTS -->
