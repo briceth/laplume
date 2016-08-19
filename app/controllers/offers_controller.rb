@@ -17,7 +17,16 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     @writer = @offer.user
-    @messages = Message.all (TODO only filter the ones sent by the two parties)
+    @client = @offer.mission.user
+    @messages = []
+    @messages_writer = Message.where(user: @writer).all
+      @messages_writer.each do |message|
+        @messages << message
+      end
+    @messages_client = Message.where(user: @client).all
+      @messages_client.each do |message|
+        @messages << message
+      end
     @messages_sorted = @messages.sort { |a,b| a.created_at <=> b.created_at }
   end
 
