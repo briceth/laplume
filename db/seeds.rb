@@ -88,31 +88,54 @@ nab = User.create!({
 
 puts "C'est bon pour #{nab.first_name}"
 
-# epx_poeme = Experience.create!({
+# MISSION SEED A FINIR
+# bio_nab = Mission.create!({
 #   user_id: User.where(first_name: "Paul-Marie").id,
-#   category: "Experience",
-#   start_date: "1-6-2014",
-#   end_date: "1-6-2015",
-#   title: "Les Amies, scènes d'amour sapphique",
-#   description: "Recueil érotique",
-#   organization: "Secrète",
+#   title: "Ma longue vie",
+#   description: "Un truc sérieux",
 #   })
-
-# puts "C'est bon pour #{epx_poeme.title}"
-
-# ecole = Experience.create!({
-#   user_id: User.where(first_name: "Paul-Marie").id,
-#   category: "Education",
-#   start_date: "1-6-2014",
-#   end_date: "1-6-2015",
-#   title: " les Vilains Bonshommes",
-#   description: "cercles littéraires parisiens",
-#   organization: "Ecole de la vie",
-#   })
-
-# puts "C'est bon pour #{ecole.title}"
 
 ############################################
+
+ase = User.create!({
+  first_name: "Antoine",
+  last_name: "de Saint-Exupéry",
+  email: "ase@gmail.com",
+  password: 123456,
+  price: 400,
+  writer: true,
+  phone_number: "0793827738",
+  available: true,
+  })
+
+puts "C'est bon pour #{ase.first_name}"
+
+epx_book = Experience.create!({
+  user_id: User.where(first_name: "Antoine").first.id,
+  category: "Experience",
+  start_date: "1-6-2014",
+  end_date: "1-6-2015",
+  title: "Le Petit Prince",
+  description: "Chaque chapitre relate une rencontre du petit prince qui laisse celui-ci perplexe quant au comportement absurde des 'grandes personnes'.",
+  organization: "Mondiale",
+  })
+
+puts "C'est bon pour #{epx_book.title}"
+
+college = Experience.create!({
+  user_id: User.where(first_name: "Antoine").first.id,
+  category: "Education",
+  start_date: "1-6-2014",
+  end_date: "1-6-2015",
+  title: "Ecole",
+  description: "Education moderne ",
+  organization: "Collège Stanislas de Paris",
+  })
+
+puts "C'est bon pour #{college.title}"
+
+############################################
+
 
 
 
