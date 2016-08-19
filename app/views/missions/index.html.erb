@@ -10,7 +10,6 @@
               <div class="card-mission">
                 <h3><%= mission.title %></h3>
                 <p><%= mission.description  %></p>
-                <%=  link_to "", mission_path(mission), class: "link-cover-all" %>
                   <% mission.offers.each do |offer| %>
                     <p><%= "Writter(s) on the the project " + offer.user.first_name + offer.user.last_name %></p>
                   <% end %>
@@ -37,9 +36,10 @@
                       </div>
                     </div>
                   </div>
-
-                  <%= link_to "Delete", mission_path(mission), method: :delete, class: "btn btn-primary" %>
+                  <%=  link_to "", mission_path(mission), class: "link-cover-all" %>
+                   <%= link_to "Delete", mission_path(mission), method: :destroy, class: "btn btn-primary" %>
               </div>
+
             </div>
           </div>
         <% end %>
@@ -70,6 +70,7 @@
   <h3><%= mission.title %></h3>
   <p><%= mission.description  %></p>
   <%=  link_to "visit", mission_path(mission) %>
+  <%=  link_to "jump", offer_path(offer)%>
 <% end %>
 
 <!-- SCRIPTS -->
