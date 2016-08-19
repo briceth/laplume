@@ -1,3 +1,5 @@
+
+  <!-- MISSIONS CREATED -->
   <div class="container">
       <% if @missions.nil? == true %>
         <h3 class="text-center">you haven't created or taken any missions</h3>
@@ -60,6 +62,15 @@
   </div>
 </div>
 <br>
+
+<!-- MISSIONS ASSIGNED -->
+
+<% current_user.offers.each do |offer| %>
+  <% mission = offer.mission %>
+  <h3><%= mission.title %></h3>
+  <p><%= mission.description  %></p>
+  <%=  link_to "visit", mission_path(mission) %>
+<% end %>
 
 <!-- SCRIPTS -->
 
