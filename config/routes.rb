@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   get 'search', to: 'pages#search'
 
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resources :offers, only: [:new, :create]
+  end
 
-  resources :offers, only: [:new, :create, :update, :show, :destroy]
+  resources :offers, only: [:update, :show, :destroy]
 
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
 

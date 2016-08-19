@@ -3,15 +3,20 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
     @missions = current_user.missions
+    @user = User.find(params[:user_id])
   end
 
   def create
     @mission = Mission.find(offer_params[:mission])
     @offer = Offer.new(mission: @mission)
-    @writer = User.find(offer_params[:user])
+    @writer = User.find(params[:user_id])
     @offer.user = @writer
-    @offer.save
-    redirect_to mission_path(@mission)
+
+    if @offer.save
+      redirect_to mission_path(@mission)
+    else
+      render :new
+    end
   end
 
   def show
