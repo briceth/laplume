@@ -5,7 +5,6 @@
   background-position: center;
 }
 
-
 .wrapper.padded {
   background-color: #ffffff;
   height: 100vh;
@@ -56,5 +55,13 @@
 
 #field-150px {
   height: 150px;
+}
+
+.message-box {
+  margin-top: 200px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
