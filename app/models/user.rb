@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_attachment :photo
 
-  has_many :experiences, dependent: :destroy
+  has_many :experiences
   has_many :missions
   has_many :offers
   has_many :messags
