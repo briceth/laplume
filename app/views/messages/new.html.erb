@@ -3,6 +3,7 @@
     <div class="col-xs-6 col-xs-offset-3">
       <%= simple_form_for @message do |f| %>
         <%= f.input :content %>
+        <%= f.input :user, input_html: { value: params[:format] }, as: :hidden %>
         <%= f.button :submit %>
       <% end %>
     </div>

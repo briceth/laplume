@@ -1,35 +1,32 @@
 <div class="wrapper-mission">
   <div class="container">
     <div class="row relative">
-          <% @missions.each do |mission| %>
-      <div class="col-md-12">
-          <div class="card-profil-search">
-            <h3><%= mission.title %></h3>
-            <p><%= mission.description  %></p>
-<<<<<<< HEAD
-            <%= link_to "", mission_path(mission), class: "link-cover-all" %>
-=======
-
-
-            <div class="row">
-            <div class="col-sm-8"></div>
-              <div class="col-sm-4">
-                <% mission.offers.each do |offer| %>
-                  <u>Writter(s) on the the project</u>
-                  <p><%= offer.user.first_name %> <%= offer.user.last_name %></p>
-                <% end %>
+      <% if @missions.nil? == true %>
+        <h3 class="text-center">you haven't created or taken any missions</h3>
+      <% else %>
+        <% @missions_created.each do |mission| %>
+          <div class="col-xs-12">
+            <d iv class="card-profil-search">
+              <h3><%= mission.title %></h3>
+              <p><%= mission.description  %></p>
+              <%= link_to "", mission_path(mission), class: "link-cover-all" %>
+              <%= link_to "visit", mission_path(mission) %>
+              <div class="row">
+              <div class="col-xs-8"></div>
+                <div class="col-xs-4">
+                  <% mission.offers.each do |offer| %>
+                    <u>Writter(s) on the the project</u>
+                    <p><%= offer.user.first_name %> <%= offer.user.last_name %></p>
+                  <% end %>
+                </div>
               </div>
             </div>
->>>>>>> master
-          </div>
+            <br>
 
-          <br>
-
-          <!-- Button Modal: Edit Mission -->
-
-           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditMissionModal">
+            <!-- Button Modal: Edit Mission -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditMissionModal">
             Edit
-          </button>
+            </button>
 
             <!-- Modal: Edit Mission / can't put it below, it needs to be in the loop  -->
             <div class="modal fade" id="EditMissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -49,9 +46,10 @@
                 </div>
               </div>
             </div>
-          <%= link_to "Delete", mission_path(mission), method: :delete, class: "btn btn-primary" %>
-      </div>
-          <% end %>
+            <%= link_to "Delete", mission_path(mission), method: :delete, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

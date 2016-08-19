@@ -1,10 +1,10 @@
-<div class="wrapper experience">
+<div class="wrapper padded signup">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <div class="experience-form">
           <%= simple_form_for([ @experience ]) do |form| %>
-            <%= form.input :category, collection: ["Experience", "Education" ] %>
+            <%= form.input :category, collection: [ "Experience", "Education" ] %>
             <%= form.input :title %>
             <%= form.input :organization %>
             <%= form.input :start_date %>

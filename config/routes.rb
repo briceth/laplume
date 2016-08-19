@@ -12,10 +12,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
+  resources :offers, only: [:new, :create, :update, :show]
+
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
 
   resources :missions
 
-  resources :offers, only: [:new, :create, :update, :show]
+  resources :messages, only: [:new, :create]
+
 
 end

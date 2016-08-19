@@ -4,6 +4,7 @@
       <div class="col-xs-4 col-xs-offset-4">
         <%= simple_form_for @offer do |f| %>
           <%= f.input :mission, collection: @missions %>
+          <%= f.input :user, input_html: { value: params[:format] }, as: :hidden %>
           <%= f.button :submit %>
         <% end %>
       </div>

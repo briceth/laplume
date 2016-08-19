@@ -3,11 +3,14 @@ before_action :set_mission, only: [:show, :edit, :update, :destroy]
 
   def index
     @missions = Mission.all
+    @missions_created = Mission.where(user: current_user).all
+    # @missions_taken = Mission.where(self.offer.user: current_user}) current_user).all
     @mission = Mission.new
     @users = User.all
   end
 
   def show
+    @offers = @mission.offers
   end
 
   def create
