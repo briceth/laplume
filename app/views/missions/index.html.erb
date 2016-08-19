@@ -14,32 +14,31 @@
                     <p><%= "Writter(s) on the the project " + offer.user.first_name + offer.user.last_name %></p>
                   <% end %>
                   <br>
-                  <!-- Button Modal: Edit Mission -->
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditMissionModal">
-                  Edit
-                  </button>
-                  <!-- Modal: Edit Mission / can't put it below, it needs to be in the loop  -->
-                  <div class="modal fade" id="EditMissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">Edit</h4>
-                        </div>
-                        <div class="modal-body">
-                          <%= simple_form_for([ mission ]) do |form| %>
-                            <%= form.input :title %>
-                            <%= form.input :description, input_html: {style: "height: 150px;"} %>
-                            <%= form.button :submit %>
-                          <% end %>
-                        </div>
+                  <%=  link_to "", mission_path(mission), class: "link-cover-all" %>
+              </div>
+                <!-- Button Modal: Edit Mission -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditMissionModal">
+                Edit
+                </button>
+                <!-- Modal: Edit Mission / can't put it below, it needs to be in the loop  -->
+                <div class="modal fade" id="EditMissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for([ mission ]) do |form| %>
+                          <%= form.input :title %>
+                          <%= form.input :description, input_html: {style: "height: 150px;"} %>
+                          <%= form.button :submit %>
+                        <% end %>
                       </div>
                     </div>
                   </div>
-                  <%=  link_to "", mission_path(mission), class: "link-cover-all" %>
-                   <%= link_to "Delete", mission_path(mission), method: :destroy, class: "btn btn-primary" %>
-              </div>
-
+                </div>
+                <%= link_to "Delete", mission_path(mission), method: :destroy, class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>
@@ -54,7 +53,7 @@
     <div class="row">
       <div class="col-xs-12">
         <!-- Button Modal: Create Mission -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#NewMissionModal">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#NewMissionModal">
         New Mission
         </button>
       </div>
@@ -77,7 +76,7 @@
                 <br>
                 <p><%= mission.description  %></p>
               </div>
-              <strong><p><%=  link_to "message", offer_path(offer)%></p></strong>
+              <strong><p><%=  link_to "Manage", offer_path(offer), class: "btn btn-primary" %></p></strong>
            <% end %>
           </div>
         </div>
