@@ -1,15 +1,16 @@
 <div class="wrapper">
   <!-- MISSION -->
   <div class="wrapper-mission">
-    <h2>Title</h2>
-    <h4><%= @mission.title  %></h4>
+    <h2 style="color: white;">Title</h2>
+    <h4 style="color: white;"><%= @mission.title  %></h4>
       <br>
     <%= link_to 'back', missions_path, class: "btn btn-danger" %>
       <br>
       <br>
+    <h3 style="color: white;">Offers made to:</h3>
     <ol>
       <% @offers.each do |offer| %>
-        <li style="color: white;"> <%= link_to (offer.user.first_name + " " + offer.user.last_name), offer_path(offer) %></li>
+        <li style="background-color: white; color: white;"> <%= link_to (offer.user.first_name + " " + offer.user.last_name), offer_path(offer) %></li>
       <% end %>
     </ol>
 

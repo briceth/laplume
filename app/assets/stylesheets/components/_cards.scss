@@ -95,7 +95,23 @@
   right: 0;
 }
 
-
+.card-mission {
+  position: relative;
+  margin-top: 60px;
+  border-width: 0.5px;
+  padding: 20px 20px;
+  border-style: solid;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-color: $midnight-blue-30;
+  color: $midnight-blue-80;
+    &:hover {
+    background-color: $grey;
+    border-width: 0.5px;
+    border-color: $midnight-blue-50;
+    color: $midnight-blue-80;
+  }
+}
 
 
 
