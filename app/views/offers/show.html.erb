@@ -1,16 +1,54 @@
 <!-- this is the page where a client will see the messages sent by a writer concerning an offer -->
-
-<% @messages_sorted.each do |message| %>
-  <% if message.user == current_user %>
-    <p><%= message.content + "\b - you" %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
     <br>
-  <% else %>
-    <p><%= message.content + "\b - other user" %></p>
-    <br>
-  <% end %>
-<% end %>
 
-<%= link_to "Send Message", new_message_path(@writer), class: "btn btn-primary" %>
-<%= link_to "Back to Missions", missions_path, class: "btn btn-primary" %>
+      <!-- Messages -->
+      <div class="box-shadow">
+        <% @messages_sorted.each do |message| %>
+          <% if message.user == current_user %>
+            <div class="text-right"
+              <p><%= message.content %></p>
+              <p> - you </p>
+            </div>
+            <br>
+          <% else %>
+            <div class="text-left">
+              <p><%= message.content %></p>
+              <p>
+
+                  <% if current_user == @writer %>
+                    <%= " - " + @client.first_name + " " + @client.last_name %>
+                  <% elsif current_user == @client %>
+                    <%= " - " + @writer.first_name + " " + @writer.last_name %>
+                  <% else %>
+                    <%= " - other user" %>
+                  <% end %>
+
+               </p>
+            <div>
+            <br>
+          <% end %>
+        <% end %>
+      </div>
+      <br>
+
+      <!-- 3 Buttons -->
+      <div class="text-center">
+        <%= link_to "Send Message", new_message_path(@writer), class: "btn btn-primary" %>
+        <%= link_to "Back to Missions", missions_path, class: "btn btn-primary" %>
+        <% if current_user == @writer %>
+          <%= link_to "Reject Offer", offer_path(@offer), method: :delete, class: "btn btn-primary" %>
+        <% end %>
+        <% if current_user == @client %>
+          <%= link_to "Cancel Offer", offer_path(@offer), method: :delete, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 

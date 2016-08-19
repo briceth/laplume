@@ -30,6 +30,12 @@ class OffersController < ApplicationController
     @messages_sorted = @messages.sort { |a,b| a.created_at <=> b.created_at }
   end
 
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    redirect_to missions_path
+  end
+
   private
 
   def offer_params
