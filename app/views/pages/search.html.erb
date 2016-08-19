@@ -30,12 +30,12 @@
       </div>
 
       <div class="col-xs-2">
-        <div class="circle multi-line">
-          <strong>Daily rate:</strong> <br>
+        <div class="circle multi-line" >
+          <strong  id="balek" >Daily rate:</strong> <br>
           <% if  writer.price.nil? %>
-            <span><p>on request</p></span>
+            <span  id="balek" ><p>on request</p></span>
           <% else  %>
-            <span><p><%= writer.price.to_s + "€" %></p></span>
+            <span  id="balek" ><p><%= writer.price.to_s + "€" %></p></span>
           <% end %>
         </div>
       </div>
