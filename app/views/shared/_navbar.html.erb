@@ -32,9 +32,9 @@
         <div class="dropdown">
           <% if user_signed_in? && current_user.facebook_picture_url %>
             <%= image_tag current_user.facebook_picture_url, height: 50, width: 50, class: "avatar padding-bottom dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <% elsif @user.photo? %>
-            <%= cl_image_tag(@user.photo.path, { size: '40x40', crop: :thumb, class:"avatar padding-bottom dropdown-toggle", id: "navbar-wagon-menu" }) %>
-            <% else %>
+          <% elsif current_user.photo? %>
+            <%= cl_image_tag(current_user.photo.path, { size: '40x40', crop: :thumb, class:"avatar padding-bottom dropdown-toggle", id: "navbar-wagon-menu" }) %>
+          <% else %>
               <%= image_tag "user-icon.png", class: "avatar padding-bottom dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% end %>
 
