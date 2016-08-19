@@ -4,9 +4,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = Message.new(content: message_params[:content])
     @message.user = current_user
-    @message.offer = Offer.find(params...)
+    @writer = User.find(message_params[:user])
+    @message.offer = Offer.find_by user: @writer
     @message.save
     redirect_to offer_path(@message.offer)
   end
@@ -14,7 +15,8 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :user)
   end
 
 end
+
