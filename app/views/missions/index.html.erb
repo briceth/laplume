@@ -64,13 +64,23 @@
 <br>
 
 <!-- MISSIONS ASSIGNED -->
-
-<% current_user.offers.each do |offer| %>
-  <% mission = offer.mission %>
-  <h3><%= mission.title %></h3>
-  <p><%= mission.description  %></p>
-  <%=  link_to "jump", offer_path(offer)%>
-<% end %>
+<div class="wrapper-blue">
+  <div class="blued">
+    <div class="container">
+      <div class="row">
+        <% current_user.offers.each do |offer| %>
+            <% mission = offer.mission %>
+            <div class="mission-important">
+              <h3><%= mission.title %></h3>
+              <br>
+              <p><%= mission.description  %></p>
+            </div>
+            <strong><p><%=  link_to "message", offer_path(offer)%></p></strong>
+         <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- SCRIPTS -->
 
