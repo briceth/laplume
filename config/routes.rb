@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
-  resources :offers, only: [:new, :create, :update, :show]
+  resources :offers, only: [:new, :create, :update, :show, :destroy]
 
   resources :experiences, only: [:new, :create, :destroy, :edit, :update]
 
