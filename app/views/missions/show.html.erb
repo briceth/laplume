@@ -1,29 +1,40 @@
-<div class="wrapper">
-  <!-- MISSION -->
-  <div class="wrapper-mission">
-    <h2 style="color: white;">Title</h2>
-    <h4 style="color: white;"><%= @mission.title  %></h4>
-      <br>
-    <%= link_to 'back', missions_path, class: "btn btn-danger" %>
-      <br>
-      <br>
-    <h3 style="color: white;">Offers made to:</h3>
-    <ol>
-      <% @offers.each do |offer| %>
-        <li style="background-color: white; color: white;"> <%= link_to (offer.user.first_name + " " + offer.user.last_name), offer_path(offer) %></li>
-      <% end %>
-    </ol>
-
-
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.4) 0%, rgba(0,36,61,0.3) 50%), url(<%= image_path "machine.jpg" %>);">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="custom">
+        <!-- MISSION -->
+        <!-- <div class="wrapper-mission"> -->
+        <div class="trapper">
+          <h2 style="color: white;">Title</h2>
+          <h4 style="color: white;"><%= @mission.title  %></h4>
+            <br>
+          <%= link_to 'back', missions_path, class: "btn btn-default" %>
+            <br>
+            <br>
+          <h3 style="color: white;">Offers made to:</h3>
+          <br>
+          <i id="writer-offer">
+          <ol>
+            <% @offers.each do |offer| %>
+              <li > <%= link_to (offer.user.first_name + " " + offer.user.last_name), offer_path(offer), id: "writer-offer" %></li>
+            <% end %>
+          </ol>
+          </i>
+    </div>
+  </div>
+</div>
+</div>
   </div>
 
   <!-- OFFERS -->
-  <div class="wrapper-offers">
+  <!-- <div class="wrapper-offers">
 
 
 
 
-  </div>
+  </div> -->
+
 </div>
 
 
