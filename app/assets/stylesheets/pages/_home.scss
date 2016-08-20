@@ -1,3 +1,15 @@
+.banner {
+  min-height: 100vh;
+}
 #banner-title {
-text-shadow: 4px 4px 7px rgba(0,0,0,0.7);
+text-shadow: 1px 2px 1px rgba(0,0,0,0.7);
+}
+
+#search-form {
+  height: 55px;
+  border-radius: 20em;
+  margin-right: 15px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
 }
