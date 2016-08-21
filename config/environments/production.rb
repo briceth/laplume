@@ -84,4 +84,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #mailing
+  config.action_mailer.default_url_options = "https://laplume.herokuapp.com"
 end

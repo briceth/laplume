@@ -13,6 +13,7 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'omniauth-facebook'
+gem "letter_opener", group: :development
 
 
 gem 'sass-rails'
@@ -26,7 +27,7 @@ gem 'autoprefixer-rails'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-
+  gem "letter_opener"
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'

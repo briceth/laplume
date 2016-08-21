@@ -13,6 +13,7 @@ class OffersController < ApplicationController
     @offer.user = @writer
 
     if @offer.save
+      OfferMailer.creation_confirmation(@offer).deliver_now
       redirect_to mission_path(@mission)
     else
       render :new
